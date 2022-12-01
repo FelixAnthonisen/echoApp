@@ -9,6 +9,9 @@ import SwiftUI
 
 struct Login: View {
     @EnvironmentObject var session: SessionManager
+    let echoGradient = LinearGradient(
+        colors: [.yellow, .teal],
+        startPoint: .top, endPoint: .bottom)
     var body: some View {
         VStack {
             Spacer()
@@ -32,13 +35,13 @@ struct Login: View {
                 }
             }) {
                 Text("Logg inn")
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .font(Font.system(size: 22))
             }
             .padding([.horizontal], 20)
             .padding([.vertical], 10)
             .fontWeight(.bold)
-            .background(Color.blue)
+            .background(.teal)
 
             .foregroundColor(.white)
             .cornerRadius(20)

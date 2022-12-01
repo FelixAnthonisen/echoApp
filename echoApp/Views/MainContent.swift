@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct MainContent: View {
+    let echoGradient = LinearGradient(
+        colors: [.yellow, .teal],
+        startPoint: .top, endPoint: .bottom)
     var body: some View {
         VStack {
             Happenings()
                 .padding(.bottom)
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)
-                        .stroke(.white, lineWidth: 2)
+                        .stroke(echoGradient, lineWidth: 2)
                 )
                 .padding(.vertical)
             Bedpress()
                 .padding(.bottom)
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)
-                        .stroke(.white, lineWidth: 2)
+                        .stroke(echoGradient, lineWidth: 2)
                 )
                 .padding(.vertical)
         }
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
     }
 }
 

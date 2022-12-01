@@ -58,13 +58,13 @@ struct Profile: View {
                 }
             }){
                 Text("Logg ut")
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .font(Font.system(size: 22))
             }
             .padding([.horizontal], 20)
             .padding([.vertical], 10)
             .fontWeight(.bold)
-            .background(Color.blue)
+            .background(.teal)
 
             .foregroundColor(.white)
             .cornerRadius(20)

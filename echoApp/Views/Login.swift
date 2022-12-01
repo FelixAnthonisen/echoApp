@@ -28,7 +28,7 @@ struct Login: View {
             Spacer()
             Button (action: {
                 withAnimation {
-                    session.login()
+                    session.faceIDAuth()
                 }
             }) {
                 Text("Logg inn")

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LocalAuthentication
 
 final class SessionManager: ObservableObject {
     
@@ -22,6 +23,24 @@ final class SessionManager: ObservableObject {
     
     func logout() {
         currentState = .loggedOut
+    }
+    
+    
+    func faceIDAuth() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This is for security reasons") { success, authenicationError in
+                if success {
+                    self.login()
+                } else {
+                    print("did not work")
+                }
+            }
+        } else {
+            print("fuck")
+        }
     }
 
 }

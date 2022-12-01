@@ -8,19 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
+    let backgroundGradient = LinearGradient(
+        colors: [Color("GradientStart"), Color("GradientEnd")],
+        startPoint: .top, endPoint: .bottom)
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ScrollView{
+            VStack {
+                Group{
+                    Navbar()
+                    Navbar()
+                    Navbar()
+                    Navbar()
+                    Navbar()
+                    Navbar()
+                    Navbar()
+                    Navbar()
+                    Navbar()
+                    Navbar()
+                }
+                Navbar()
+                Navbar()
+                Navbar()
+                Navbar()
+                Spacer()
+                MainContent()
+                Spacer()
+                Footer()
+            }
+           
         }
-        .padding()
+        .background(backgroundGradient)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().preferredColorScheme(.dark)
     }
 }

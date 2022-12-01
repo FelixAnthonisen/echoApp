@@ -42,7 +42,6 @@ struct Navbar: View {
                     Login()
                         .background(.black)
                         .environmentObject(session)
-                    
                 }
             }
         }

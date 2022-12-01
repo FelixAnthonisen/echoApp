@@ -34,8 +34,10 @@ struct Happenings: View {
                         .listRowBackground(Color.black.opacity(0))
                     .foregroundColor(.white)
                     Spacer()
+                    Text("10. Des")
+                        .foregroundColor(.white)
                 }
-                .padding(.leading, 10)
+                .padding(.horizontal, 10)
                 .padding(.bottom, 8)
             }
         }

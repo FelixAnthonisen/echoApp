@@ -27,8 +27,12 @@ struct Footer: View {
                 Spacer()
             }
             .padding(.vertical)
-            }
+            Text("Developed by Torger and Felix")
+                .foregroundColor(.white)
+                .font(.footnote)
         }
+        .padding(.bottom)
+    }
         
 }
 

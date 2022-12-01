@@ -33,11 +33,12 @@ struct Bedpress: View {
             ForEach(bedpresser, id:\.self) { bedpress in
                 HStack {
                     Text(bedpress)
-                        .listRowBackground(Color.black.opacity(0))
-                    .foregroundColor(.white)
+                        .foregroundColor(.white)
                     Spacer()
+                    Text("10. Des")
+                        .foregroundColor(.white)
                 }
-                .padding(.leading, 10)
+                .padding(.horizontal, 10)
                 .padding(.bottom, 8)
             }
         }

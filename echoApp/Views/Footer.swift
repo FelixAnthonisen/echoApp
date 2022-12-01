@@ -9,8 +9,25 @@ import SwiftUI
 
 struct Footer: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        VStack{
+            Divider()
+                .overlay(Color("BW"))
+            HStack{
+                Spacer()
+                Text("Placeholder")
+                Spacer()
+                Image(systemName: "face.smiling")
+                    .imageScale(.large)
+                    .foregroundColor(Color("BW"))
+                Spacer()
+                Text("Powered by \nSANITY")
+                    .fontWeight(.bold)
+                Spacer()
+            }
+            .padding(.vertical)
+            }
+        }
+        
 }
 
 struct Footer_Previews: PreviewProvider {

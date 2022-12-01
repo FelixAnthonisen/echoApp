@@ -12,15 +12,44 @@ struct ContentView: View {
         colors: [Color("GradientStart"), Color("GradientEnd")],
         startPoint: .top, endPoint: .bottom)
     var body: some View {
-        ScrollView{
-            VStack {
-                Navbar()
-                Spacer()
-                MainContent()
-                Spacer()
-                Footer()
+        VStack{
+            Navbar()
+            ScrollView{
+                VStack {
+                    Spacer()
+                    MainContent()
+                    Group{
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                    }
+                    .padding()
+                    Group{
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                        Text("TEST")
+                    }
+                    .padding()
+                    Spacer()
+                    Footer()
+                }
+               
             }
-           
+            .background(Color.black.opacity(0))
         }
         .background(backgroundGradient)
     }
@@ -29,5 +58,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().preferredColorScheme(.dark)
+        ContentView().preferredColorScheme(.light)
     }
 }

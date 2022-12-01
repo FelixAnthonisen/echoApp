@@ -14,21 +14,6 @@ struct ContentView: View {
     var body: some View {
         ScrollView{
             VStack {
-                Group{
-                    Navbar()
-                    Navbar()
-                    Navbar()
-                    Navbar()
-                    Navbar()
-                    Navbar()
-                    Navbar()
-                    Navbar()
-                    Navbar()
-                    Navbar()
-                }
-                Navbar()
-                Navbar()
-                Navbar()
                 Navbar()
                 Spacer()
                 MainContent()

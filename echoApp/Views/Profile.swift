@@ -69,6 +69,7 @@ struct Profile: View {
             .foregroundColor(.white)
             .cornerRadius(20)
         }
+        .padding(.top)
     }
 }
 

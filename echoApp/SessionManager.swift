@@ -15,7 +15,7 @@ final class SessionManager: ObservableObject {
     }
     
     @Published private(set) var currentState: CurrentState?
-    
+
     func login() {
         currentState = .loggedIn
     }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct Login: View {
     @EnvironmentObject var session: SessionManager
-    
     var body: some View {
         VStack {
             Spacer()

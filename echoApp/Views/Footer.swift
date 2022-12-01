@@ -11,14 +11,14 @@ struct Footer: View {
     var body: some View {
         VStack{
             Divider()
-                .overlay(Color("BW"))
+                .overlay(.black)
             HStack{
                 Spacer()
                 Text("Placeholder")
                 Spacer()
                 Image(systemName: "face.smiling")
                     .imageScale(.large)
-                    .foregroundColor(Color("BW"))
+                    .foregroundColor(.black)
                 Spacer()
                 Text("Powered by \nSANITY")
                     .fontWeight(.bold)

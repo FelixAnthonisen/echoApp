@@ -10,21 +10,13 @@ import SwiftUI
 struct MainAppView: View {
     @StateObject private var session = SessionManager()
     var body: some View {
-        switch session.currentState {
-        case .loggedIn:
             ContentView()
-                .environmentObject(session)
-                .transition(.opacity)
-        default:
-            Login()
-                .environmentObject(session)
-                .transition(.opacity)
-        }
+            .environmentObject(session)
     }
 }
 
 struct MainAppView_Previews: PreviewProvider {
     static var previews: some View {
-        MainAppView()
+        MainAppView().preferredColorScheme(.dark)
     }
 }

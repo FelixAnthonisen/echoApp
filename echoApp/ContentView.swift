@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var session: SessionManager
     let backgroundGradient = LinearGradient(
         colors: [Color("GradientStart"), Color("GradientEnd")],
         startPoint: .top, endPoint: .bottom)
     var body: some View {
         VStack{
             Navbar()
+                .environmentObject(session)
             ScrollView{
                 VStack {
                     Spacer()

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Navbar: View {
+    @EnvironmentObject var session: SessionManager
+    @State private var isLoggedIn = false
+    @State private var showProfile = false
     var body: some View {
         HStack {
             Image("echoLogo")
@@ -16,11 +19,19 @@ struct Navbar: View {
                 .frame(height: 50)
             Spacer()
             Button(action: {
-                //toggle sheet
+                self.showProfile.toggle()
             }){
                 Image(systemName: "line.3.horizontal")
-                    .foregroundColor(Color("BW"))
+                    .foregroundColor(.black)
                     .imageScale(.large)
+            }
+            .sheet(isPresented: $showProfile){
+                switch session.currentState{
+                    case .loggedIn:
+                        Profile().environmentObject(session)
+                    default:
+                        Login().environmentObject(session)
+                }
             }
         }
         .padding()

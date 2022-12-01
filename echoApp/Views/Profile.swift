@@ -19,11 +19,11 @@ struct Profile: View {
                 Image(systemName: "circle.fill")
                     .imageScale(.large)
                     .offset(x: 25, y: 40)
-                    .foregroundColor(Color("BW"))
+                    .foregroundColor(.white)
                 Image(systemName: "camera.circle")
                     .imageScale(.large)
                     .offset(x: 25, y: 40)
-                    .foregroundColor(Color("WB"))
+                    .foregroundColor(.black)
             }
             
             Text("Torger Bocianowski")

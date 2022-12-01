@@ -12,11 +12,14 @@ struct Login: View {
     var body: some View {
         VStack {
             Spacer()
-            Spacer()
             HStack{
-                Text("Welcome")
+                Text("Velkommen til \nECHO")
                     .font(Font.system(size: 40))
                     .foregroundColor(.white)
+                Image("echoLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 90)
                 Spacer()
             }
             .padding()

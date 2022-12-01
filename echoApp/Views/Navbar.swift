@@ -15,8 +15,13 @@ struct Navbar: View {
         HStack {
             Image("echoLogo")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 50)
+                .scaledToFit()
+                .frame(width: 50)
+            Spacer()
+            Text("ECHO")
+                .fontWeight(.bold)
+                .font(Font.system(size: 35))
+                .foregroundColor(.white)
             Spacer()
             Button(action: {
                 self.showProfile.toggle()
@@ -24,6 +29,7 @@ struct Navbar: View {
                 Image(systemName: "person.crop.circle")
                     .foregroundColor(.white)
                     .imageScale(.large)
+                    .frame(width: 50)
             }
             .sheet(isPresented: $showProfile){
                 switch session.currentState{
@@ -47,6 +53,6 @@ struct Navbar: View {
 
 struct Navbar_Previews: PreviewProvider {
     static var previews: some View {
-        Navbar()
+        Navbar().background(.black)
     }
 }

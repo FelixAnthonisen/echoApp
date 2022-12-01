@@ -15,12 +15,14 @@ struct Footer: View {
             HStack{
                 Spacer()
                 Text("Placeholder")
+                    .foregroundColor(.white)
                 Spacer()
                 Image(systemName: "face.smiling")
                     .imageScale(.large)
                     .foregroundColor(.white)
                 Spacer()
                 Text("Powered by \nSANITY")
+                    .foregroundColor(.white)
                     .fontWeight(.bold)
                 Spacer()
             }
@@ -32,6 +34,6 @@ struct Footer: View {
 
 struct Footer_Previews: PreviewProvider {
     static var previews: some View {
-        Footer()
+        Footer().background(.black)
     }
 }

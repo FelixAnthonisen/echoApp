@@ -20,32 +20,6 @@ struct ContentView: View {
                 VStack {
                     Spacer()
                     MainContent()
-                    Group{
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                    }
-                    .padding()
-                    Group{
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                        Text("TEST")
-                    }
-                    .padding()
                     Spacer()
                     Footer()
                 }

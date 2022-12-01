@@ -13,33 +13,38 @@ struct Login: View {
         VStack {
             Spacer()
             Spacer()
-            Text("Welcome")
-                .font(Font.system(size: 40))
-                .offset(x: -100, y: -100)
+            HStack{
+                Text("Welcome")
+                    .font(Font.system(size: 40))
+                    .foregroundColor(.white)
+                Spacer()
+            }
+            .padding()
             Text("Logg inn med Feide på en eller annen måte xD")
+                .foregroundColor(.white)
             Spacer()
             Button (action: {
                 withAnimation {
                     session.login()
                 }
             }) {
-                    Text("Logg inn").font(Font.system(size: 22))
-                }
-                .padding([.horizontal], 20)
-                .padding([.vertical], 10)
-                .fontWeight(.bold)
-                .background(Color.blue)
+                Text("Logg inn")
+                    .foregroundColor(.white)
+                    .font(Font.system(size: 22))
+            }
+            .padding([.horizontal], 20)
+            .padding([.vertical], 10)
+            .fontWeight(.bold)
+            .background(Color.blue)
 
-                .foregroundColor(.white)
-                .cornerRadius(20)
-        
-                Spacer()
+            .foregroundColor(.white)
+            .cornerRadius(20)
         }
     }
 }
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        Login()
+        Login().background(.black)
     }
 }

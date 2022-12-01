@@ -21,16 +21,22 @@ struct Navbar: View {
             Button(action: {
                 self.showProfile.toggle()
             }){
-                Image(systemName: "line.3.horizontal")
-                    .foregroundColor(.black)
+                Image(systemName: "person.crop.circle")
+                    .foregroundColor(.white)
                     .imageScale(.large)
             }
             .sheet(isPresented: $showProfile){
                 switch session.currentState{
                     case .loggedIn:
-                        Profile().environmentObject(session)
+                    Profile()
+                        .background(.black)
+                        .environmentObject(session)
+
                     default:
-                        Login().environmentObject(session)
+                    Login()
+                        .background(.black)
+                        .environmentObject(session)
+                    
                 }
             }
         }

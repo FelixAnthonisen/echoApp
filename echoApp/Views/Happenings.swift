@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct Happenings: View {
+    
+    let happenings = [
+        "NBIM",
+        "Bouvet",
+        "DNB"
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            HStack {
+                Text("Arrangementer")
+                    .font(Font.system(size: 25))
+                    .foregroundColor(.white)
+                Spacer()
+            }.padding()
+            
+            
+            List {
+                ForEach(happenings, id:\.self) { happening in
+                    Text(happening)
+                        .listRowBackground(Color.black.opacity(0))
+                        .foregroundColor(.white)
+                }
+            }.listStyle(.plain)
+        }.background(Color.black)
     }
 }
 

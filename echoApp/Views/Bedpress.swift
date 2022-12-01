@@ -6,10 +6,35 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct Bedpress: View {
+    
+    let bedpresser = [
+        "NBIM",
+        "Bouvet",
+        "DNB"
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            HStack {
+                Text("Bedriftspresentasjoner")
+                    .font(Font.system(size: 25))
+                    .foregroundColor(.white)
+                Spacer()
+            }.padding()
+            
+            
+            List {
+                ForEach(bedpresser, id:\.self) { bedpress in
+                    Text(bedpress)
+                        .listRowBackground(Color.black.opacity(0))
+                        .foregroundColor(.white)
+                }
+            }.listStyle(.plain)
+        }.background(Color.black)
     }
 }
 

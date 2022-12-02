@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainContent: View {
+    //@State private var bedpressPresented:Bool = false
     let echoGradient = LinearGradient(
         colors: [.yellow, .teal],
         startPoint: .top, endPoint: .bottom)
@@ -29,6 +30,12 @@ struct MainContent: View {
     
     var body: some View {
         VStack {
+            /*Button(action: {self.bedpressPresented.toggle()}) {InfoContainer(title: "Arrangementer", data: happenings)
+            }
+            .sheet(isPresented: $bedpressPresented){
+                InfoContainer(title: "Arrangementer", data: happenings)
+                    .background(.black)
+            }*/
             InfoContainer(title: "Arrangementer", data: happenings)
             InfoContainer(title: "Bedpresser", data: bedpresser)
         }

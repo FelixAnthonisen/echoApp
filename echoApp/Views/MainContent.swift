@@ -20,7 +20,7 @@ struct MainContent: View {
                         .stroke(echoGradient, lineWidth: 2)
                 )
                 .padding(.vertical)
-            Bedpress()
+            BedpressOversikt()
                 .padding(.bottom)
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)

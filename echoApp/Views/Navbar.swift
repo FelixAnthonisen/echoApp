@@ -37,11 +37,12 @@ struct Navbar: View {
                     Profile()
                         .background(.black)
                         .environmentObject(session)
-
+                        .presentationDetents([.fraction(0.5)])
                     default:
                     Login()
                         .background(.black)
                         .environmentObject(session)
+                        .presentationDetents([.fraction(0.5)])
                 }
             }
         }

@@ -17,14 +17,14 @@ struct MainContent: View {
                 .padding(.bottom)
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)
-                        .stroke(echoGradient, lineWidth: 2)
+                        .stroke(echoGradient, lineWidth: 0.5)
                 )
                 .padding(.vertical)
             Bedpress()
                 .padding(.bottom)
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)
-                        .stroke(echoGradient, lineWidth: 2)
+                        .stroke(echoGradient, lineWidth: 0.5)
                 )
                 .padding(.vertical)
         }

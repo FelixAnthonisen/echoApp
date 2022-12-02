@@ -32,19 +32,20 @@ struct Navbar: View {
                     .frame(width: 50)
             }
             .sheet(isPresented: $showProfile){
-                switch session.currentState{
-                    case .loggedIn:
-                    Profile()
-                        .background(.black)
-                        .environmentObject(session)
-                        .presentationDetents([.fraction(0.5)])
-                    default:
-                    Login()
-                        .background(.black)
-                        .environmentObject(session)
-                        .presentationDetents([.fraction(0.5)])
+                
+                Section {
+                    switch session.currentState{
+                        case .loggedIn:
+                        Profile()
+                        default:
+                        Login()
+                    }
                 }
+                .background(.black)
+                .environmentObject(session)
+                .presentationDetents([.fraction(0.5)])
             }
+            
         }
         .padding()
         

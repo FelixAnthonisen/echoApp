@@ -9,23 +9,11 @@ import SwiftUI
 
 struct Profile: View {
     @EnvironmentObject var session: SessionManager
+    let backgroundGradient = LinearGradient(
+        colors: [Color("GradientStart"), Color("GradientEnd")],
+        startPoint: .top, endPoint: .bottom)
     var body: some View {
         VStack {
-            /*ZStack {
-                Image(systemName: "person.crop.circle")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 100)
-                    .foregroundColor(.white)
-                Image(systemName: "circle.fill")
-                    .imageScale(.large)
-                    .offset(x: 25, y: 40)
-                    .foregroundColor(.white)
-                Image(systemName: "camera.circle")
-                    .imageScale(.large)
-                    .offset(x: 25, y: 40)
-                    .foregroundColor(.black)
-            }*/
             Text("Min profil")
                 .font(.largeTitle)
                 .foregroundColor(.white)
@@ -70,11 +58,12 @@ struct Profile: View {
             .cornerRadius(20)
         }
         .padding(.top)
+        .background(backgroundGradient)
     }
 }
 
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
-        Profile().background(.black)
+        Profile()
     }
 }

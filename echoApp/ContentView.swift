@@ -13,27 +13,28 @@ struct ContentView: View {
         colors: [Color("GradientStart"), Color("GradientEnd")],
         startPoint: .top, endPoint: .bottom)
     var body: some View {
-        VStack{
-            Navbar()
-                .environmentObject(session)
-            ScrollView{
-                VStack {
-                    Spacer()
-                    MainContent()
-                    Spacer()
-                    Footer()
+        NavigationStack {
+            VStack {
+                Navbar()
+                    .environmentObject(session)
+                ScrollView{
+                    VStack {
+                        Spacer()
+                        MainContent()
+                        Spacer()
+                        Footer()
+                    }
+                   
                 }
-               
+                .background(Color.black.opacity(0))
             }
-            .background(Color.black.opacity(0))
+            .background(backgroundGradient)
         }
-        .background(backgroundGradient)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().preferredColorScheme(.dark)
-        ContentView().preferredColorScheme(.light)
+        ContentView()
     }
 }

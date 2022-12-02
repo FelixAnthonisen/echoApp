@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52F5123D2938EDD8009FEB14 /* Happenings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5123C2938EDD8009FEB14 /* Happenings.swift */; };
-		52F5123F2938EDE7009FEB14 /* BedpressOversikt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5123E2938EDE7009FEB14 /* BedpressOversikt.swift */; };
 		52F512412938EEC9009FEB14 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512402938EEC9009FEB14 /* Login.swift */; };
 		52F512432938EEEC009FEB14 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512422938EEEC009FEB14 /* Profile.swift */; };
 		52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512442938EFC9009FEB14 /* SessionManager.swift */; };
@@ -23,8 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		52F5123C2938EDD8009FEB14 /* Happenings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Happenings.swift; sourceTree = "<group>"; };
-		52F5123E2938EDE7009FEB14 /* BedpressOversikt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedpressOversikt.swift; sourceTree = "<group>"; };
 		52F512402938EEC9009FEB14 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		52F512422938EEEC009FEB14 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52F512442938EFC9009FEB14 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -93,8 +89,6 @@
 				9B8DBF7B2938E9CE007E5178 /* Footer.swift */,
 				9B8DBF7D2938EB0D007E5178 /* Navbar.swift */,
 				9B8DBF7F2938EC23007E5178 /* MainContent.swift */,
-				52F5123C2938EDD8009FEB14 /* Happenings.swift */,
-				52F5123E2938EDE7009FEB14 /* BedpressOversikt.swift */,
 				52F512402938EEC9009FEB14 /* Login.swift */,
 				52F512422938EEEC009FEB14 /* Profile.swift */,
 				52F5124C293A1104009FEB14 /* Test.swift */,
@@ -174,11 +168,9 @@
 			files = (
 				9B8DBF7C2938E9CE007E5178 /* Footer.swift in Sources */,
 				9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */,
-				52F5123F2938EDE7009FEB14 /* BedpressOversikt.swift in Sources */,
 				9B8DBF7E2938EB0D007E5178 /* Navbar.swift in Sources */,
 				9B8DBF6F2938E7D3007E5178 /* ContentView.swift in Sources */,
 				52F5124D293A1104009FEB14 /* Test.swift in Sources */,
-				52F5123D2938EDD8009FEB14 /* Happenings.swift in Sources */,
 				9B8DBF6D2938E7D3007E5178 /* echoAppApp.swift in Sources */,
 				52F512432938EEEC009FEB14 /* Profile.swift in Sources */,
 				52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */,

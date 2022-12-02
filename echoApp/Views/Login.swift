@@ -12,6 +12,10 @@ struct Login: View {
     let echoGradient = LinearGradient(
         colors: [.yellow, .teal],
         startPoint: .top, endPoint: .bottom)
+    let backgroundGradient = LinearGradient(
+        colors: [Color("GradientStart"), Color("GradientEnd")],
+        startPoint: .top, endPoint: .bottom)
+    
     var body: some View {
         VStack {
             Spacer()
@@ -45,12 +49,12 @@ struct Login: View {
 
             .foregroundColor(.white)
             .cornerRadius(20)
-        }
+        }.background(backgroundGradient)
     }
 }
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        Login().background(.black)
+        Login()
     }
 }

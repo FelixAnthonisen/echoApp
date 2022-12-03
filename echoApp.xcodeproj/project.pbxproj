@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520E56F7293BAFBD00464310 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 520E56F6293BAFBD00464310 /* SDWebImageSwiftUI */; };
+		520E56F9293BB1CA00464310 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E56F8293BB1CA00464310 /* ErrorView.swift */; };
+		52F05ABC293B4C67001EF591 /* Sanity in Frameworks */ = {isa = PBXBuildFile; productRef = 52F05ABB293B4C67001EF591 /* Sanity */; };
+		52F05ABE293B5272001EF591 /* SanityTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F05ABD293B5272001EF591 /* SanityTester.swift */; };
 		52F512412938EEC9009FEB14 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512402938EEC9009FEB14 /* Login.swift */; };
 		52F512432938EEEC009FEB14 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512422938EEEC009FEB14 /* Profile.swift */; };
 		52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512442938EFC9009FEB14 /* SessionManager.swift */; };
@@ -21,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		520E56F8293BB1CA00464310 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		52F05ABD293B5272001EF591 /* SanityTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityTester.swift; sourceTree = "<group>"; };
 		52F512402938EEC9009FEB14 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		52F512422938EEEC009FEB14 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52F512442938EFC9009FEB14 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -40,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520E56F7293BAFBD00464310 /* SDWebImageSwiftUI in Frameworks */,
+				52F05ABC293B4C67001EF591 /* Sanity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +79,7 @@
 				9B8DBF702938E7D4007E5178 /* Assets.xcassets */,
 				9B8DBF722938E7D4007E5178 /* Preview Content */,
 				52F512442938EFC9009FEB14 /* SessionManager.swift */,
+				52F05ABD293B5272001EF591 /* SanityTester.swift */,
 			);
 			path = echoApp;
 			sourceTree = "<group>";
@@ -92,6 +101,7 @@
 				52F512402938EEC9009FEB14 /* Login.swift */,
 				52F512422938EEEC009FEB14 /* Profile.swift */,
 				52F5124C293A1104009FEB14 /* Test.swift */,
+				520E56F8293BB1CA00464310 /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,6 +122,10 @@
 			dependencies = (
 			);
 			name = echoApp;
+			packageProductDependencies = (
+				52F05ABB293B4C67001EF591 /* Sanity */,
+				520E56F6293BAFBD00464310 /* SDWebImageSwiftUI */,
+			);
 			productName = echoApp;
 			productReference = 9B8DBF692938E7D3007E5178 /* echoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +154,10 @@
 				Base,
 			);
 			mainGroup = 9B8DBF602938E7D3007E5178;
+			packageReferences = (
+				52F05ABA293B4C66001EF591 /* XCRemoteSwiftPackageReference "swift-sanity" */,
+				520E56F5293BAFBD00464310 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 9B8DBF6A2938E7D3007E5178 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,9 +190,11 @@
 				9B8DBF6F2938E7D3007E5178 /* ContentView.swift in Sources */,
 				52F5124D293A1104009FEB14 /* Test.swift in Sources */,
 				9B8DBF6D2938E7D3007E5178 /* echoAppApp.swift in Sources */,
+				52F05ABE293B5272001EF591 /* SanityTester.swift in Sources */,
 				52F512432938EEEC009FEB14 /* Profile.swift in Sources */,
 				52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */,
 				52F512412938EEC9009FEB14 /* Login.swift in Sources */,
+				520E56F9293BB1CA00464310 /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +397,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		520E56F5293BAFBD00464310 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		52F05ABA293B4C66001EF591 /* XCRemoteSwiftPackageReference "swift-sanity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanity-io/swift-sanity.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		520E56F6293BAFBD00464310 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 520E56F5293BAFBD00464310 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		52F05ABB293B4C67001EF591 /* Sanity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52F05ABA293B4C66001EF591 /* XCRemoteSwiftPackageReference "swift-sanity" */;
+			productName = Sanity;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9B8DBF612938E7D3007E5178 /* Project object */;
 }

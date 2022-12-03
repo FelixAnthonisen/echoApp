@@ -12,25 +12,10 @@ struct MainContent: View {
         colors: [.yellow, .teal],
         startPoint: .top, endPoint: .bottom)
     
-    let bedpresser = [
-        "NBIM": "20. des",
-        "Bouvet": "10. nov",
-        "DNB": "31. okt",
-        "Visma": "4. jun",
-    ]
-    
-    let happenings = [
-        "Julelunsj med Hyggkom🎄": "21. jan",
-        "Eksamensfest med Tilde🥳": "11. feb",
-        "Vinterball🥂": "6. sep",
-        "Bedriftstur til Oslo🏙": "4. nov",
-        "Eksamen": "19. des"
-    ]
-    
     var body: some View {
         VStack {
-            InfoContainer(title: "Arrangementer", data: happenings)
-            InfoContainer(title: "Bedpresser", data: bedpresser)
+            InfoContainer(title: "Arrangementer")
+            InfoContainer(title: "Bedpresser")
         }
         .padding(.horizontal, 20)
     }
@@ -38,7 +23,7 @@ struct MainContent: View {
 
 struct MainContent_Previews: PreviewProvider {
     static var previews: some View {
-        MainContent().background(.black)
+        MainContent()
     }
 }
 
@@ -49,61 +34,96 @@ struct InfoContainer: View {
         startPoint: .top, endPoint: .bottom)
     
     let title: String
-    let data: [String: String]
+    //let data: [String: String]
+    
+    
+    @ObservedObject private var happeningFetcher = HappeningFetcher()
     
     var body: some View {
         NavigationStack {
             VStack {
                 Text(title)
                     .fontWeight(.bold)
-                    .font(Font.system(size: 25))
+                    .font(.title)
                     .foregroundColor(.white)
                     .padding()
                 Divider()
-                    .overlay(.white)
+                    .overlay(.yellow)
                     .padding(.bottom)
                 ScrollView {
-                    ForEach(data.sorted(by: <), id: \.key) { name, date in
-                        NavigationLink(destination: EventView(text: name, date: date)) {
-                            HStack {
-                                Text(name)
-                                Spacer()
-                                Text(date)
-                            }
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 10)
-                            .padding(.bottom, 8)
-                        }
-                    }
+                    HappeningList(happenings: self.happeningFetcher.happenings)
                 }
+                .onAppear {
+                    self.happeningFetcher.fetchHappenings()
+                    self.happeningFetcher.listenHappenings()
+                }
+                
             }
             .padding(.bottom)
-            .overlay(
-                RoundedRectangle(cornerRadius: 30)
-                    .stroke(echoGradient, lineWidth: 0.5)
-            )
-        .padding(.vertical)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(echoGradient, lineWidth: 0.5)
+                )
+                .padding(.vertical)
         }
     }
 }
-
+    
 struct EventView: View {
-    let text: String
+    //let _id: String
+    let title: String
     let date: String
+    let desc: String
+    //let slug: String
+    
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Text(text)
-                    .font(.title)
-                    .foregroundColor(.white)
-                Spacer()
-            }
-            Text(date)
+            Text(title)
+                .font(.title)
+                .foregroundColor(.white)
+                .padding()
+
+            let start = date.startIndex
+            let end = date.index(start, offsetBy: 10)
+            Text(date[start..<end])
                 .font(.title2)
                 .foregroundColor(.white)
+                .padding()
+            ScrollView {
+                Text(desc)
+                    .foregroundColor(.white)
+                    .padding()
+            }
             Spacer()
         }
         .background(.black)
+        
     }
 }
+
+struct HappeningList: View {
+    let happenings: [Happening]
+    
+    var body: some View {
+        VStack {
+            ForEach(self.happenings, id: \._id) { happening in
+                VStack {
+                    NavigationLink(destination: {
+                        EventView(title: happening.title, date: happening.date, desc: happening.desc)
+                    }) {
+                        HStack {
+                            Text(happening.title)
+                            Spacer()
+                        }
+                    }
+                }
+                .foregroundColor(.white)
+                .padding(.bottom, 10)
+                .padding(.horizontal, 10)
+            }
+        }
+    }
+}
+    
+    
+

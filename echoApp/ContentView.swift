@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var session = SessionManager()
+    
     let backgroundGradient = LinearGradient(
         colors: [Color("GradientStart"), Color("GradientEnd")],
         startPoint: .top, endPoint: .bottom)
@@ -21,6 +22,7 @@ struct ContentView: View {
                     VStack {
                         Spacer()
                         MainContent()
+                        //Test()
                         Spacer()
                         Footer()
                     }

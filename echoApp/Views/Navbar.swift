@@ -18,7 +18,7 @@ struct Navbar: View {
                 .scaledToFit()
                 .frame(width: 50)
             Spacer()
-            Text("ECHO")
+            Text("echo")
                 .fontWeight(.bold)
                 .font(Font.system(size: 35))
                 .foregroundColor(.white)

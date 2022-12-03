@@ -1,0 +1,40 @@
+{
+  "pins" : [
+    {
+      "identity" : "eventsource",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/inaka/EventSource.git",
+      "state" : {
+        "revision" : "78934b361891c7d0fa3d399d128e959f0c94d267"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "3312bf5e67b52fbce7c3caf431b0cda721a9f7bb",
+        "version" : "5.14.2"
+      }
+    },
+    {
+      "identity" : "sdwebimageswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
+      "state" : {
+        "revision" : "ed288667c909c89127ab1b690113a3e397af3098",
+        "version" : "2.2.1"
+      }
+    },
+    {
+      "identity" : "swift-sanity",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sanity-io/swift-sanity.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d9f3edfcb0c3ad9997320542983fbb62a1a52831"
+      }
+    }
+  ],
+  "version" : 2
+}

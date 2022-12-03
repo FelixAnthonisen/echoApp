@@ -13,67 +13,21 @@ import SDWebImageSwiftUI
 
 
 var happeningQuery = """
-*[_type == "happening"][0...5]{
+*[_type == "happening"]{
   _id, title, date,
   "desc": body.no,
   "slug": slug.current
 }
 """
-struct Test: View {
-    @ObservedObject private var happeningFetcher = HappeningFetcher()
-    //let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
-    /*var happeningQuery = """
-    *[_type == "happening"][0...5]{
-      _id, title, date,
-      "desc": body.no,
-      "slug": slug.current
-    }
-    """*/
-    /*var bedpressQuery = """
-    *[_type == "happening" && happeningType == "BEDPRES"][0...5]{
-      _id, title, date,
-      "desc": body.no,
-      "slug": slug.current
-    }
-    """*/
-    var body: some View {
-        VStack {
-            Button {
-                happeningFetcher.fetchHappenings()
-            } label: {
-                Text("fetch arrangementer")
-            }.padding()
-        }
-    }
-    
-    /*func fetchHappenings() {
-        //var res: [Happening]
-        let query = client.query([Happening].self, query: happeningQuery)
-        query.fetch { completion in
-            DispatchQueue.main.async {
-                switch(completion) {
-                case .success(let response):
-                     dump(response.result)
-                case .failure(let error):
-                    dump(error)
-                }
-            }
-        }
-        
-    }*/
-}
 
+// companyLink
+// logo
 
-struct Test_Previews: PreviewProvider {
-    static var previews: some View {
-        Test()
-    }
-}
 
 struct Happening: Decodable {
-    
-    static let queryAll = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false).query([Happening].self, query: happeningQuery)
-    static let queryListen = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false).query(Happening.self, query: happeningQuery)
+    static let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
+    static let queryAll = client.query([Happening].self, query: happeningQuery)
+    static let queryListen = client.query(Happening.self, query: happeningQuery)
     
     let _id: String
     let title: String
@@ -97,8 +51,6 @@ class HappeningFetcher: ObservableObject {
     @Published var error: Error? = nil
     @Published var ms: Int = 0
     @Published var queryString: String = ""
-    
-    let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
 
     private var fetchHappeningsCancellable: AnyCancellable?
     private var listenHappeningsCancellable: AnyCancellable?
@@ -119,19 +71,6 @@ class HappeningFetcher: ObservableObject {
                 self.ms = response.ms
                 self.queryString = response.query
             })
-        /*let query = client.query([Happening].self, query: happeningQuery)
-        query.fetch { completion in
-            DispatchQueue.main.async {
-                switch(completion) {
-                case .success(let response):
-                    print(response.result)
-                     dump(response.result)
-                case .failure(let error):
-                    dump(error)
-                }
-            }
-        }*/
-        
     }
     
     func listenHappenings() {

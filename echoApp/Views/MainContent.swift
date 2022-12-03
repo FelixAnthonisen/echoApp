@@ -82,21 +82,22 @@ struct EventView: View {
     let title: String
     let date: String
     let desc: String
-    //let slug: String
+    let slug: String
     
     var body: some View {
         VStack {
-            Text(title)
-                .font(.title)
-                .foregroundColor(.white)
-                .padding()
+            Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!){
+                Text(title)
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .padding()
+            }
 
             let start = date.startIndex
             let end = date.index(start, offsetBy: 10)
             Text(date[start..<end])
-                .font(.title2)
+                .font(.title3)
                 .foregroundColor(.white)
-                .padding()
             ScrollView {
                 Text(desc)
                     .foregroundColor(.white)
@@ -115,12 +116,17 @@ struct HappeningList: View {
     var body: some View {
         VStack {
             ForEach(self.happenings, id: \._id) { happening in
-                VStack {
+                VStack (alignment: .leading) {
                     NavigationLink(destination: {
-                        EventView(title: happening.title, date: happening.date, desc: happening.desc)
+                        EventView(title: happening.title,
+                                  date: happening.date,
+                                  desc: happening.desc,
+                                  slug: happening.slug
+                        )
                     }) {
                         HStack {
                             Text(happening.title)
+                                .font(.title3)
                             Spacer()
                         }
                     }

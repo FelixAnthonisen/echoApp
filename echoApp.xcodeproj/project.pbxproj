@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		520E56F7293BAFBD00464310 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 520E56F6293BAFBD00464310 /* SDWebImageSwiftUI */; };
 		520E56F9293BB1CA00464310 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E56F8293BB1CA00464310 /* ErrorView.swift */; };
+		520E5701293C005C00464310 /* EventInfoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E5700293C005C00464310 /* EventInfoBox.swift */; };
+		520E5703293C02EC00464310 /* BedpressClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E5702293C02EC00464310 /* BedpressClass.swift */; };
 		52F05ABC293B4C67001EF591 /* Sanity in Frameworks */ = {isa = PBXBuildFile; productRef = 52F05ABB293B4C67001EF591 /* Sanity */; };
 		52F05ABE293B5272001EF591 /* SanityTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F05ABD293B5272001EF591 /* SanityTester.swift */; };
 		52F512412938EEC9009FEB14 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512402938EEC9009FEB14 /* Login.swift */; };
 		52F512432938EEEC009FEB14 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512422938EEEC009FEB14 /* Profile.swift */; };
 		52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512442938EFC9009FEB14 /* SessionManager.swift */; };
-		52F5124D293A1104009FEB14 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5124C293A1104009FEB14 /* Test.swift */; };
+		52F5124D293A1104009FEB14 /* HappeningClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5124C293A1104009FEB14 /* HappeningClass.swift */; };
 		9B8DBF6D2938E7D3007E5178 /* echoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF6C2938E7D3007E5178 /* echoAppApp.swift */; };
 		9B8DBF6F2938E7D3007E5178 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF6E2938E7D3007E5178 /* ContentView.swift */; };
 		9B8DBF712938E7D4007E5178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B8DBF702938E7D4007E5178 /* Assets.xcassets */; };
@@ -26,11 +28,13 @@
 
 /* Begin PBXFileReference section */
 		520E56F8293BB1CA00464310 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		520E5700293C005C00464310 /* EventInfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoBox.swift; sourceTree = "<group>"; };
+		520E5702293C02EC00464310 /* BedpressClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedpressClass.swift; sourceTree = "<group>"; };
 		52F05ABD293B5272001EF591 /* SanityTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityTester.swift; sourceTree = "<group>"; };
 		52F512402938EEC9009FEB14 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		52F512422938EEEC009FEB14 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52F512442938EFC9009FEB14 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		52F5124C293A1104009FEB14 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		52F5124C293A1104009FEB14 /* HappeningClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningClass.swift; sourceTree = "<group>"; };
 		9B8DBF692938E7D3007E5178 /* echoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = echoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8DBF6C2938E7D3007E5178 /* echoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = echoAppApp.swift; sourceTree = "<group>"; };
 		9B8DBF6E2938E7D3007E5178 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,8 +104,10 @@
 				9B8DBF7F2938EC23007E5178 /* MainContent.swift */,
 				52F512402938EEC9009FEB14 /* Login.swift */,
 				52F512422938EEEC009FEB14 /* Profile.swift */,
-				52F5124C293A1104009FEB14 /* Test.swift */,
+				52F5124C293A1104009FEB14 /* HappeningClass.swift */,
 				520E56F8293BB1CA00464310 /* ErrorView.swift */,
+				520E5700293C005C00464310 /* EventInfoBox.swift */,
+				520E5702293C02EC00464310 /* BedpressClass.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,11 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520E5701293C005C00464310 /* EventInfoBox.swift in Sources */,
 				9B8DBF7C2938E9CE007E5178 /* Footer.swift in Sources */,
 				9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */,
 				9B8DBF7E2938EB0D007E5178 /* Navbar.swift in Sources */,
 				9B8DBF6F2938E7D3007E5178 /* ContentView.swift in Sources */,
-				52F5124D293A1104009FEB14 /* Test.swift in Sources */,
+				52F5124D293A1104009FEB14 /* HappeningClass.swift in Sources */,
+				520E5703293C02EC00464310 /* BedpressClass.swift in Sources */,
 				9B8DBF6D2938E7D3007E5178 /* echoAppApp.swift in Sources */,
 				52F05ABE293B5272001EF591 /* SanityTester.swift in Sources */,
 				52F512432938EEEC009FEB14 /* Profile.swift in Sources */,

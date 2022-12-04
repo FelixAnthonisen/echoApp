@@ -15,9 +15,9 @@ import SDWebImageSwiftUI
 
 
 var bedpressQuery = """
-*[_type == "happening" && happeningType == "BEDPRES"]{
+*[_type == "happening" && happeningType == "BEDPRES" && registrationDate != NULL && slug.current != NULL]{
     _id, title, date, companyLink, registrationDate,
-    registrationDeadline, location,
+    location,
     "desc": body.no,
     "slug": slug.current,
     "logo": logo.asset._ref
@@ -35,7 +35,6 @@ struct Bedpress: Decodable {
     let date: String
     let companyLink: String
     let registrationDate: String
-    let registrationDeadline: String
     let location: String
     let desc: String
     let slug: String
@@ -48,7 +47,6 @@ struct Bedpress: Decodable {
             date: with.date,
             companyLink: with.companyLink,
             registrationDate: with.registrationDate,
-            registrationDeadline: with.registrationDeadline,
             location: with.location,
             desc: with.desc,
             slug: with.slug,
@@ -75,6 +73,7 @@ class BedpressFetcher: ObservableObject {
                 case .finished:
                     break
                 case let .failure(error):
+                    print(error)
                     self.error = error
                 }
             }, receiveValue: { response in

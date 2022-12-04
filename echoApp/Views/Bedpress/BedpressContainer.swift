@@ -52,7 +52,6 @@ struct BedpressView: View {
     let date: String
     let companyLink: String
     let registrationDate: String
-    let registrationDeadline: String
     let location: String
     let desc: String
     let slug: String
@@ -92,10 +91,16 @@ struct BedpressList: View {
             ForEach(self.bedpresser, id: \._id) { bedpress in
                 VStack (alignment: .leading) {
                     NavigationLink(destination: {
-                        EventView(title: bedpress.title,
-                                  date: bedpress.date,
-                                  desc: bedpress.desc,
-                                  slug: bedpress.slug
+                        BedpressView(
+                            _id: bedpress._id,
+                            title: bedpress.title,
+                            date: bedpress.date,
+                            companyLink: bedpress.companyLink,
+                            registrationDate: bedpress.registrationDate,
+                            location: bedpress.location,
+                            desc: bedpress.desc,
+                            slug: bedpress.slug,
+                            logo: bedpress.logo
                         )
                     }) {
                         HStack {

@@ -6,6 +6,46 @@
 //
 
 import SwiftUI
+import Sanity
+import SDWebImageSwiftUI
+
+
+struct CircleImage: View{
+    let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
+    let image: SanityType.Image
+    init(ref:String){
+        self.image = SanityType.Image(
+            asset: SanityType.Ref(
+                _ref: ref,
+                _type: "reference"
+            ),
+            crop: SanityType.Image.Crop(
+                bottom: 0.1,
+                left: 0.1,
+                top: 0.1,
+                right: 0.1
+            ),
+            hotspot: SanityType.Image.Hotspot(
+                width: 0.3,
+                height: 0.3,
+                x: 0.3,
+                y: 0.3
+            )
+        )
+    }
+    var body: some View {
+        WebImage(url: client.imageURL(self.image)
+            .URL()
+        )
+        .resizable()
+        .scaledToFit()
+        .frame(width: 40, height: 40, alignment: .center)
+        .clipShape(Circle())
+        .overlay {
+            Circle().stroke(.white, lineWidth: 1)
+        }
+    }
+}
 
 struct BedpressContainer: View {
     let echoGradient = LinearGradient(
@@ -59,6 +99,7 @@ struct BedpressView: View {
     
     var body: some View {
         VStack {
+            CircleImage(ref: logo)
             Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!){
                 Text(title)
                     .font(.title)
@@ -88,6 +129,7 @@ struct BedpressList: View {
 
     var body: some View {
         VStack {
+            Image(systemName: "profile")
             ForEach(self.bedpresser, id: \._id) { bedpress in
                 VStack (alignment: .leading) {
                     NavigationLink(destination: {
@@ -104,6 +146,7 @@ struct BedpressList: View {
                         )
                     }) {
                         HStack {
+                            CircleImage(ref: bedpress.logo)
                             Text(bedpress.title)
                                 .font(.title3)
                             Spacer()

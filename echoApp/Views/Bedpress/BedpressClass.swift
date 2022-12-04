@@ -24,7 +24,6 @@ var bedpressQuery = """
 }
 """
 
-
 struct Bedpress: Decodable {
     static let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
     static let queryAll = client.query([Bedpress].self, query: bedpressQuery)
@@ -39,6 +38,11 @@ struct Bedpress: Decodable {
     let desc: String
     let slug: String
     let logo: String
+
+    func makeUrl() {
+        print("hi")
+    }
+  
     
     func merge(with: Self) -> Bedpress {
         Bedpress(

@@ -16,7 +16,9 @@
 		52F512412938EEC9009FEB14 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512402938EEC9009FEB14 /* Login.swift */; };
 		52F512432938EEEC009FEB14 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512422938EEEC009FEB14 /* Profile.swift */; };
 		52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512442938EFC9009FEB14 /* SessionManager.swift */; };
-		52F5124D293A1104009FEB14 /* HappeningClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5124C293A1104009FEB14 /* HappeningClass.swift */; };
+		52F5124D293A1104009FEB14 /* EventClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5124C293A1104009FEB14 /* EventClass.swift */; };
+		9B7E9018293CEDDD008D8C09 /* EventContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E9017293CEDDD008D8C09 /* EventContainer.swift */; };
+		9B7E901A293CEDFB008D8C09 /* BedpressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */; };
 		9B8DBF6D2938E7D3007E5178 /* echoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF6C2938E7D3007E5178 /* echoAppApp.swift */; };
 		9B8DBF6F2938E7D3007E5178 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF6E2938E7D3007E5178 /* ContentView.swift */; };
 		9B8DBF712938E7D4007E5178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B8DBF702938E7D4007E5178 /* Assets.xcassets */; };
@@ -34,7 +36,9 @@
 		52F512402938EEC9009FEB14 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		52F512422938EEEC009FEB14 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52F512442938EFC9009FEB14 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		52F5124C293A1104009FEB14 /* HappeningClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningClass.swift; sourceTree = "<group>"; };
+		52F5124C293A1104009FEB14 /* EventClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventClass.swift; sourceTree = "<group>"; };
+		9B7E9017293CEDDD008D8C09 /* EventContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContainer.swift; sourceTree = "<group>"; };
+		9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedpressContainer.swift; sourceTree = "<group>"; };
 		9B8DBF692938E7D3007E5178 /* echoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = echoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8DBF6C2938E7D3007E5178 /* echoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = echoAppApp.swift; sourceTree = "<group>"; };
 		9B8DBF6E2938E7D3007E5178 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +62,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B7E9015293CEC17008D8C09 /* Bedpress */ = {
+			isa = PBXGroup;
+			children = (
+				520E5702293C02EC00464310 /* BedpressClass.swift */,
+				9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */,
+			);
+			path = Bedpress;
+			sourceTree = "<group>";
+		};
+		9B7E9016293CEC20008D8C09 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				52F5124C293A1104009FEB14 /* EventClass.swift */,
+				9B7E9017293CEDDD008D8C09 /* EventContainer.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		9B8DBF602938E7D3007E5178 = {
 			isa = PBXGroup;
 			children = (
@@ -99,15 +121,15 @@
 		9B8DBF7A2938E9BF007E5178 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9B7E9016293CEC20008D8C09 /* Event */,
+				9B7E9015293CEC17008D8C09 /* Bedpress */,
 				9B8DBF7B2938E9CE007E5178 /* Footer.swift */,
 				9B8DBF7D2938EB0D007E5178 /* Navbar.swift */,
 				9B8DBF7F2938EC23007E5178 /* MainContent.swift */,
 				52F512402938EEC9009FEB14 /* Login.swift */,
 				52F512422938EEEC009FEB14 /* Profile.swift */,
-				52F5124C293A1104009FEB14 /* HappeningClass.swift */,
 				520E56F8293BB1CA00464310 /* ErrorView.swift */,
 				520E5700293C005C00464310 /* EventInfoBox.swift */,
-				520E5702293C02EC00464310 /* BedpressClass.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,13 +216,15 @@
 				9B8DBF7C2938E9CE007E5178 /* Footer.swift in Sources */,
 				9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */,
 				9B8DBF7E2938EB0D007E5178 /* Navbar.swift in Sources */,
+				9B7E9018293CEDDD008D8C09 /* EventContainer.swift in Sources */,
 				9B8DBF6F2938E7D3007E5178 /* ContentView.swift in Sources */,
-				52F5124D293A1104009FEB14 /* HappeningClass.swift in Sources */,
+				52F5124D293A1104009FEB14 /* EventClass.swift in Sources */,
 				520E5703293C02EC00464310 /* BedpressClass.swift in Sources */,
 				9B8DBF6D2938E7D3007E5178 /* echoAppApp.swift in Sources */,
 				52F05ABE293B5272001EF591 /* SanityTester.swift in Sources */,
 				52F512432938EEEC009FEB14 /* Profile.swift in Sources */,
 				52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */,
+				9B7E901A293CEDFB008D8C09 /* BedpressContainer.swift in Sources */,
 				52F512412938EEC9009FEB14 /* Login.swift in Sources */,
 				520E56F9293BB1CA00464310 /* ErrorView.swift in Sources */,
 			);

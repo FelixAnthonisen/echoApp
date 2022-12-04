@@ -12,9 +12,9 @@ import Combine
 import SDWebImageSwiftUI
 
 
-var happeningQuery = """
-*[_type == "happening"]{
-  _id, title, date,
+var eventQuery = """
+*[_type == "happening" && happeningType == "EVENT"] {
+  _id, title, date, location, registrationDate, 
   "desc": body.no,
   "slug": slug.current
 }
@@ -24,10 +24,10 @@ var happeningQuery = """
 // logo
 
 
-struct Happening: Decodable {
+struct Event: Decodable {
     static let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
-    static let queryAll = client.query([Happening].self, query: happeningQuery)
-    static let queryListen = client.query(Happening.self, query: happeningQuery)
+    static let queryAll = client.query([Event].self, query: eventQuery)
+    static let queryListen = client.query(Event.self, query: eventQuery)
     
     let _id: String
     let title: String
@@ -35,8 +35,8 @@ struct Happening: Decodable {
     let desc: String
     let slug: String
     
-    func merge(with: Self) -> Happening {
-        Happening(
+    func merge(with: Self) -> Event {
+        Event(
             _id: with._id,
             title: with.title,
             date: with.date,
@@ -46,18 +46,18 @@ struct Happening: Decodable {
     }
 }
 
-class HappeningFetcher: ObservableObject {
-    @Published var happenings: [Happening] = []
+class EventFetcher: ObservableObject {
+    @Published var events: [Event] = []
     @Published var error: Error? = nil
     @Published var ms: Int = 0
     @Published var queryString: String = ""
 
-    private var fetchHappeningsCancellable: AnyCancellable?
-    private var listenHappeningsCancellable: AnyCancellable?
+    private var fetchEventsCancellable: AnyCancellable?
+    private var listenEventsCancellable: AnyCancellable?
 
-    func fetchHappenings() {
-        fetchHappeningsCancellable?.cancel()
-        fetchHappeningsCancellable = Happening.queryAll.fetch()
+    func fetchEvents() {
+        fetchEventsCancellable?.cancel()
+        fetchEventsCancellable = Event.queryAll.fetch()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -67,28 +67,28 @@ class HappeningFetcher: ObservableObject {
                     self.error = error
                 }
             }, receiveValue: { response in
-                self.happenings = response.result
+                self.events = response.result
                 self.ms = response.ms
                 self.queryString = response.query
             })
     }
     
-    func listenHappenings() {
-        listenHappeningsCancellable?.cancel()
-        listenHappeningsCancellable = Happening.queryListen.listen()
+    func listenEvents() {
+        listenEventsCancellable?.cancel()
+        listenEventsCancellable = Event.queryListen.listen()
             .receive(on: DispatchQueue.main)
             .sink { update in
-                guard let happening = update.result else {
+                guard let event = update.result else {
                     return
                 }
-                if let index = self.happenings.firstIndex(where: { $0._id == happening._id }) {
-                    self.happenings[index] = self.happenings[index].merge(with: happening)
+                if let index = self.events.firstIndex(where: { $0._id == event._id }) {
+                    self.events[index] = self.events[index].merge(with: event)
                 }
             }
         }
     
     func cancel() {
-        fetchHappeningsCancellable?.cancel()
-        listenHappeningsCancellable?.cancel()
+        fetchEventsCancellable?.cancel()
+        listenEventsCancellable?.cancel()
     }
 }

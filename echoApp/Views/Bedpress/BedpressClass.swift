@@ -16,27 +16,29 @@ import SDWebImageSwiftUI
 
 var bedpressQuery = """
 *[_type == "happening" && happeningType == "BEDPRES"]{
-  _id, title, date, companyLink
-  "desc": body.no,
-  "slug": slug.current,
-  "logo": logo.asset._ref
+    _id, title, date, companyLink, registrationDate,
+    registrationDeadline, location,
+    "desc": body.no,
+    "slug": slug.current,
+    "logo": logo.asset._ref
 }
 """
-// companyLink
-// logo
 
 
 struct Bedpress: Decodable {
     static let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
-    static let queryAll = client.query([Bedpress].self, query: happeningQuery)
-    static let queryListen = client.query(Bedpress.self, query: happeningQuery)
+    static let queryAll = client.query([Bedpress].self, query: bedpressQuery)
+    static let queryListen = client.query(Bedpress.self, query: bedpressQuery)
     
     let _id: String
     let title: String
     let date: String
+    let companyLink: String
+    let registrationDate: String
+    let registrationDeadline: String
+    let location: String
     let desc: String
     let slug: String
-    let companyLink: String
     let logo: String
     
     func merge(with: Self) -> Bedpress {
@@ -44,9 +46,12 @@ struct Bedpress: Decodable {
             _id: with._id,
             title: with.title,
             date: with.date,
+            companyLink: with.companyLink,
+            registrationDate: with.registrationDate,
+            registrationDeadline: with.registrationDeadline,
+            location: with.location,
             desc: with.desc,
             slug: with.slug,
-            companyLink: with.companyLink,
             logo: with.logo
         )
     }
@@ -79,7 +84,7 @@ class BedpressFetcher: ObservableObject {
             })
     }
     
-    func listenHappenings() {
+    func listenBedpresser() {
         listenBedpresserCancellable?.cancel()
         listenBedpresserCancellable = Bedpress.queryListen.listen()
             .receive(on: DispatchQueue.main)

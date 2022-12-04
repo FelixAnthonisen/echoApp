@@ -15,8 +15,8 @@ struct MainContent: View {
     
     var body: some View {
         VStack {
-            InfoContainer(title: "Arrangementer")
-            InfoContainer(title: "Bedpresser")
+            EventContainer(title: "Arrangementer")
+            BedpressContainer(title: "Bedpresser")
             /*Button(action: {self.bedpressPresented.toggle()}) {InfoContainer(title: "Arrangementer", data: happenings)
             }
             .sheet(isPresented: $bedpressPresented){
@@ -35,109 +35,4 @@ struct MainContent_Previews: PreviewProvider {
     }
 }
 
-
-struct InfoContainer: View {
-    let echoGradient = LinearGradient(
-        colors: [.yellow, .teal],
-        startPoint: .top, endPoint: .bottom)
     
-    let title: String
-    //let data: [String: String]
-    
-    
-    @ObservedObject private var happeningFetcher = HappeningFetcher()
-    
-    var body: some View {
-        NavigationStack {
-            VStack {
-                Text(title)
-                    .fontWeight(.bold)
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .padding()
-                Divider()
-                    .overlay(.yellow)
-                    .padding(.bottom)
-                ScrollView {
-                    HappeningList(happenings: self.happeningFetcher.happenings)
-                }
-                .onAppear {
-                    self.happeningFetcher.fetchHappenings()
-                    self.happeningFetcher.listenHappenings()
-                }
-                
-            }
-            .padding(.bottom)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(echoGradient, lineWidth: 0.5)
-                )
-                .padding(.vertical)
-        }
-    }
-}
-    
-struct EventView: View {
-    //let _id: String
-    let title: String
-    let date: String
-    let desc: String
-    let slug: String
-    
-    var body: some View {
-        VStack {
-            Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!){
-                Text(title)
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .padding()
-            }
-
-            let start = date.startIndex
-            let end = date.index(start, offsetBy: 10)
-            Text(date[start..<end])
-                .font(.title3)
-                .foregroundColor(.white)
-            ScrollView {
-                Text(desc)
-                    .foregroundColor(.white)
-                    .padding()
-            }
-            Spacer()
-        }
-        .background(.black)
-        
-    }
-}
-
-struct HappeningList: View {
-    let happenings: [Happening]
-    
-    var body: some View {
-        VStack {
-            ForEach(self.happenings, id: \._id) { happening in
-                VStack (alignment: .leading) {
-                    NavigationLink(destination: {
-                        EventView(title: happening.title,
-                                  date: happening.date,
-                                  desc: happening.desc,
-                                  slug: happening.slug
-                        )
-                    }) {
-                        HStack {
-                            Text(happening.title)
-                                .font(.title3)
-                            Spacer()
-                        }
-                    }
-                }
-                .foregroundColor(.white)
-                .padding(.bottom, 10)
-                .padding(.horizontal, 10)
-            }
-        }
-    }
-}
-    
-    
-

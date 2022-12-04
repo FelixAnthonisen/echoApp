@@ -18,15 +18,12 @@ struct ContentView: View {
             VStack {
                 Navbar()
                     .environmentObject(session)
-                //ScrollView{
-                    VStack {
-                        Spacer()
-                        MainContent()
-                        Spacer()
-                        Footer()
-                    }
-                   
-                //}.background(Color.black.opacity(0))
+                VStack {
+                    Spacer()
+                    MainContent()
+                    Spacer()
+                    Footer()
+                }
             }
             .background(backgroundGradient)
         }

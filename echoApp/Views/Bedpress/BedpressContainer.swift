@@ -13,7 +13,7 @@ import SDWebImageSwiftUI
 struct CircleImage: View{
     let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
     let image: SanityType.Image
-    init(ref:String){
+    init(ref: String){
         self.image = SanityType.Image(
             asset: SanityType.Ref(
                 _ref: ref,
@@ -100,7 +100,7 @@ struct BedpressView: View {
     var body: some View {
         VStack {
             CircleImage(ref: logo)
-            Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!){
+            Link(destination: URL(string: "https://echo.uib.no/event/\(slug.replacingOccurrences(of: " ", with: "", options: .literal, range: nil))")!){
                 Text(title)
                     .font(.title)
                     .foregroundColor(.white)

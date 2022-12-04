@@ -13,10 +13,12 @@ struct Navbar: View {
     @State private var showProfile = false
     var body: some View {
         HStack {
-            Image("echoLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50)
+            Link(destination: URL(string: "https://echo.uib.no/")!) {
+                Image("echoLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50)
+            }
             Spacer()
             Text("echo")
                 .fontWeight(.bold)
@@ -34,7 +36,7 @@ struct Navbar: View {
             .sheet(isPresented: $showProfile){
                 
                 Section {
-                    switch session.currentState{
+                    switch session.currentState {
                         case .loggedIn:
                         Profile()
                         default:

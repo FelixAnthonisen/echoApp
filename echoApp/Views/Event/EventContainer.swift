@@ -6,24 +6,40 @@
 //
 
 import SwiftUI
-
+let backgroundGradient = LinearGradient(
+    colors: [Color("GradientStart"), Color("GradientEnd")],
+    startPoint: .top, endPoint: .bottom)
 struct EventContainer: View {
     let echoGradient = LinearGradient(
         colors: [.yellow, .teal],
         startPoint: .top, endPoint: .bottom)
     
-    let title: String
     
+    let title: String
+    @State private var expandView = false
     @ObservedObject private var eventFetcher = EventFetcher()
     
     var body: some View {
         NavigationStack {
             VStack {
-                Text(title)
-                    .fontWeight(.bold)
-                    .font(.title)
-                    .foregroundColor(.white)
+                HStack {
+                    Spacer()
+                    Text(title)
+                        .fontWeight(.bold)
+                        .font(.title)
+                        .foregroundColor(.white)
                     .padding()
+                    
+                    Button (action: {
+                        self.expandView.toggle()
+                    }) {
+                        Image(systemName: "arrow.up.left.and.arrow.down.right")
+                            .foregroundColor(.white)
+                            .imageScale(.large)
+                            .rotationEffect(Angle(degrees: 90))
+                            .padding(.horizontal, 20)
+                    }
+                }
                 Divider()
                     .overlay(.yellow)
                     .padding(.bottom)
@@ -37,11 +53,17 @@ struct EventContainer: View {
                 
             }
             .padding(.bottom)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(echoGradient, lineWidth: 0.5)
-                )
-                .padding(.vertical)
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(echoGradient, lineWidth: 0.5)
+            )
+            .sheet(isPresented: $expandView){
+                Section {
+                    EventList(events: self.eventFetcher.events)
+                }
+                .presentationDetents([.fraction(0.75)])
+                //.background(backgroundGradient)
+            }
         }
     }
 }
@@ -74,7 +96,7 @@ struct EventView: View {
             }
             Spacer()
         }
-        .background(.black)
+        .background(backgroundGradient)
         
     }
 }
@@ -83,7 +105,8 @@ struct EventList: View {
     let events: [Event]
     
     var body: some View {
-        VStack {
+        
+        ScrollView {
             ForEach(self.events, id: \._id) { event in
                 VStack (alignment: .leading) {
                     NavigationLink(destination: {
@@ -105,5 +128,8 @@ struct EventList: View {
                 .padding(.horizontal, 10)
             }
         }
+        .padding(.vertical)
+        .background(backgroundGradient)
+        
     }
 }

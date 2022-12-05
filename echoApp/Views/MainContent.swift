@@ -17,13 +17,6 @@ struct MainContent: View {
         VStack {
             EventContainer(title: "Arrangementer")
             BedpressContainer(title: "Bedpresser")
-            /*Button(action: {self.bedpressPresented.toggle()}) {InfoContainer(title: "Arrangementer", data: happenings)
-            }
-            .sheet(isPresented: $bedpressPresented){
-                InfoContainer(title: "Arrangementer", data: happenings)
-                    .background(.black)
-            }*/
-
         }
         .padding(.horizontal, 20)
     }

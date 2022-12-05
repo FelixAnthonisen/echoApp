@@ -31,7 +31,9 @@ struct EventContainer: View {
                     .padding()
                     
                     Button (action: {
-                        self.expandView.toggle()
+                        withAnimation(.easeInOut(duration: 4))  {
+                            self.expandView.toggle()
+                        }
                     }) {
                         Image(systemName: "arrow.up.left.and.arrow.down.right")
                             .foregroundColor(.white)
@@ -57,13 +59,17 @@ struct EventContainer: View {
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(echoGradient, lineWidth: 0.5)
             )
-            .sheet(isPresented: $expandView){
+            /*.sheet(isPresented: $expandView) {
                 Section {
-                    EventList(events: self.eventFetcher.events)
+                    EventListExpaneded(events: self.eventFetcher.events)
                 }
-                .presentationDetents([.fraction(0.75)])
-                //.background(backgroundGradient)
+                .presentationDetents([.fraction(0.5)])
+            }*/
+            if expandView {
+                EventListExpaneded(events: self.eventFetcher.events)
             }
+            
+            
         }
     }
 }
@@ -77,18 +83,38 @@ struct EventView: View {
     
     var body: some View {
         VStack {
-            Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!){
-                Text(title)
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .padding()
-            }
+            Text(title)
+                .font(.title)
+                .foregroundColor(.white)
+                .padding()
 
             let start = date.startIndex
             let end = date.index(start, offsetBy: 10)
-            Text(date[start..<end])
-                .font(.title3)
+            HStack {
+                Text(date[start..<end])
+                    .font(.title3)
                 .foregroundColor(.white)
+                Spacer()
+                Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!){
+                    Button (action: {
+                        // bare for å komme til linken og ha riktig styling
+                    }) {
+                        Text("Påmelding")
+                            .foregroundColor(.black)
+                            .font(.title2)
+                            .bold()
+                    }
+                    .padding([.horizontal], 20)
+                    .padding([.vertical], 10)
+                    .background(.teal)
+                    .foregroundColor(.white)
+                    .cornerRadius(20)
+                }
+                
+            }.padding()
+            Divider()
+                .overlay(.white)
+                .padding(.bottom)
             ScrollView {
                 Text(desc)
                     .foregroundColor(.white)
@@ -105,31 +131,68 @@ struct EventList: View {
     let events: [Event]
     
     var body: some View {
-        
-        ScrollView {
-            ForEach(self.events, id: \._id) { event in
-                VStack (alignment: .leading) {
-                    NavigationLink(destination: {
-                        EventView(title: event.title,
-                                  date: event.date,
-                                  desc: event.desc,
-                                  slug: event.slug
-                        )
-                    }) {
-                        HStack {
-                            Text(event.title)
-                                .font(.title3)
-                            Spacer()
-                        }
+        ForEach(self.events, id: \._id) { event in
+            VStack (alignment: .leading) {
+                NavigationLink(destination: {
+                    EventView(title: event.title,
+                              date: event.date,
+                              desc: event.desc,
+                              slug: event.slug
+                    )
+                }) {
+                    HStack {
+                        Text(event.title)
+                            .font(.title3)
+                        Spacer()
                     }
                 }
-                .foregroundColor(.white)
-                .padding(.bottom, 10)
-                .padding(.horizontal, 10)
             }
+            .foregroundColor(.white)
+            .padding(.bottom, 10)
+            .padding(.horizontal, 10)
         }
-        .padding(.vertical)
-        .background(backgroundGradient)
+        
+    }
+}
+
+struct EventListExpaneded: View {
+    let events: [Event]
+    
+    var body: some View {
+        
+        //NavigationStack {
+            VStack {
+                Text("Arrangementer")
+                    .font(.title)
+                    .foregroundColor(.white)
+                ScrollView {
+                    ForEach(self.events, id: \._id) { event in
+                        VStack (alignment: .leading) {
+                            NavigationLink(destination: {
+                                EventView(title: event.title,
+                                          date: event.date,
+                                          desc: event.desc,
+                                          slug: event.slug
+                                )
+                            }) {
+                                HStack {
+                                    Text(event.title)
+                                        .font(.title3)
+                                    Spacer()
+                                }
+                            }
+                        }
+                        .foregroundColor(.white)
+                        .padding(.bottom, 10)
+                        .padding(.horizontal, 10)
+                    }
+                }
+                .padding(.vertical)
+                
+            }
+            .background(.yellow)
+            
+        //}
         
     }
 }

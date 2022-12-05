@@ -40,13 +40,12 @@ struct Login: View {
             }) {
                 Text("Logg inn")
                     .foregroundColor(.black)
-                    .font(Font.system(size: 22))
+                    .font(.title2)
+                    .bold()
             }
             .padding([.horizontal], 20)
             .padding([.vertical], 10)
-            .fontWeight(.bold)
             .background(.teal)
-
             .foregroundColor(.white)
             .cornerRadius(20)
         }.background(backgroundGradient)

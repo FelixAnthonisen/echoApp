@@ -10,6 +10,8 @@ import Sanity
 import SDWebImageSwiftUI
 
 
+
+
 struct CircleImage: View{
     let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
     let logo: SanityType.Image
@@ -47,7 +49,7 @@ struct BedpressContainer: View {
                     .overlay(.yellow)
                     .padding(.bottom)
                 ScrollView {
-                    BedpressList(bedpresser: self.bedpressFetcher.bedpresser)
+                    BedpressList(bedpresser: self.bedpressFetcher.sortAndDivide()[1])
                 }
                 .onAppear {
                     self.bedpressFetcher.fetchBedpresser()
@@ -106,7 +108,7 @@ struct BedpressView: View {
 
 struct BedpressList: View {
     let bedpresser: [Bedpress]
-
+    
     var body: some View {
         VStack {
             Image(systemName: "profile")
@@ -130,6 +132,7 @@ struct BedpressList: View {
                             Text(bedpress.title)
                                 .font(.title3)
                             Spacer()
+                            Text(bedpress.date)
                         }
                     }
                 }

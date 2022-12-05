@@ -26,6 +26,7 @@
 		9B8DBF7C2938E9CE007E5178 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF7B2938E9CE007E5178 /* Footer.swift */; };
 		9B8DBF7E2938EB0D007E5178 /* Navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF7D2938EB0D007E5178 /* Navbar.swift */; };
 		9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF7F2938EC23007E5178 /* MainContent.swift */; };
+		9BCFBA9C293E5BEB002BB6F8 /* testview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFBA9B293E5BEB002BB6F8 /* testview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		9B8DBF7B2938E9CE007E5178 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
 		9B8DBF7D2938EB0D007E5178 /* Navbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navbar.swift; sourceTree = "<group>"; };
 		9B8DBF7F2938EC23007E5178 /* MainContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContent.swift; sourceTree = "<group>"; };
+		9BCFBA9B293E5BEB002BB6F8 /* testview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				520E5702293C02EC00464310 /* BedpressClass.swift */,
+				9BCFBA9B293E5BEB002BB6F8 /* testview.swift */,
 				9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */,
 			);
 			path = Bedpress;
@@ -216,6 +219,7 @@
 				9B8DBF7C2938E9CE007E5178 /* Footer.swift in Sources */,
 				9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */,
 				9B8DBF7E2938EB0D007E5178 /* Navbar.swift in Sources */,
+				9BCFBA9C293E5BEB002BB6F8 /* testview.swift in Sources */,
 				9B7E9018293CEDDD008D8C09 /* EventContainer.swift in Sources */,
 				9B8DBF6F2938E7D3007E5178 /* ContentView.swift in Sources */,
 				52F5124D293A1104009FEB14 /* EventClass.swift in Sources */,

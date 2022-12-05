@@ -12,7 +12,16 @@ import Combine
 import SDWebImageSwiftUI
 
 
-
+// https://stackoverflow.com/questions/24089999/how-do-you-create-a-swift-date-object
+extension Date {
+    init(_ dateString:String) {
+        let dateStringFormatter = DateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd"
+        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+        let date = dateStringFormatter.date(from: dateString)!
+        self.init(timeInterval:0, since:date)
+    }
+}
 
 var bedpressQuery = """
 *[_type == "happening" && happeningType == "BEDPRES" && registrationDate != NULL && slug.current != NULL]{
@@ -39,11 +48,6 @@ struct Bedpress: Decodable {
     let slug: String
     let logo: SanityType.Image
 
-    func makeUrl() {
-        print("hi")
-    }
-  
-    
     func merge(with: Self) -> Bedpress {
         Bedpress(
             _id: with._id,
@@ -104,6 +108,27 @@ class BedpressFetcher: ObservableObject {
     func cancel() {
         fetchBedpresserCancellable?.cancel()
         listenBedpresserCancellable?.cancel()
+    }
+
+    func sortAndDivide() -> [[Bedpress]]{
+        var previous: [Bedpress] = []
+        var upcoming: [Bedpress] = []
+        for i in 0..<bedpresser.count{
+            
+            let dateStr: String = bedpresser[i].date
+            
+            let start: String.Index = dateStr.startIndex
+            let end: String.Index = dateStr.index(start, offsetBy: 10)
+            let bedpressDate: Date = Date(String(dateStr[start..<end]))
+            
+            if (bedpressDate >= Date.now){
+                upcoming.append(bedpresser[i])
+            }
+            else{
+                previous.append(bedpresser[i])
+            }
+        }
+        return [previous, upcoming]
     }
 }
 

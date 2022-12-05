@@ -89,7 +89,9 @@ struct EventView: View {
                 .padding()
 
             let start = date.startIndex
+            
             let end = date.index(start, offsetBy: 10)
+            
             HStack {
                 Text(date[start..<end])
                     .font(.title3)

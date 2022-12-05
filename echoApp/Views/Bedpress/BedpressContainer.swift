@@ -12,29 +12,9 @@ import SDWebImageSwiftUI
 
 struct CircleImage: View{
     let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
-    let image: SanityType.Image
-    init(ref: String){
-        self.image = SanityType.Image(
-            asset: SanityType.Ref(
-                _ref: ref,
-                _type: "reference"
-            ),
-            crop: SanityType.Image.Crop(
-                bottom: 0.1,
-                left: 0.1,
-                top: 0.1,
-                right: 0.1
-            ),
-            hotspot: SanityType.Image.Hotspot(
-                width: 0.3,
-                height: 0.3,
-                x: 0.3,
-                y: 0.3
-            )
-        )
-    }
+    let logo: SanityType.Image
     var body: some View {
-        WebImage(url: client.imageURL(self.image)
+        WebImage(url: client.imageURL(self.logo)
             .URL()
         )
         .resizable()
@@ -95,12 +75,12 @@ struct BedpressView: View {
     let location: String
     let desc: String
     let slug: String
-    let logo: String
+    let logo: SanityType.Image
     
     var body: some View {
         VStack {
-            CircleImage(ref: logo)
-            Link(destination: URL(string: "https://echo.uib.no/event/\(slug.replacingOccurrences(of: " ", with: "", options: .literal, range: nil))")!){
+            CircleImage(logo: self.logo)
+            Link(destination: URL(string: "https://echo.uib.no/event/\(slug.replacingOccurrences(of: " ", with: "%20"))")!){
                 Text(title)
                     .font(.title)
                     .foregroundColor(.white)
@@ -146,7 +126,7 @@ struct BedpressList: View {
                         )
                     }) {
                         HStack {
-                            CircleImage(ref: bedpress.logo)
+                            CircleImage(logo: bedpress.logo)
                             Text(bedpress.title)
                                 .font(.title3)
                             Spacer()

@@ -20,7 +20,7 @@ var bedpressQuery = """
     location,
     "desc": body.no,
     "slug": slug.current,
-    "logo": logo.asset._ref
+    logo
 }
 """
 
@@ -37,7 +37,7 @@ struct Bedpress: Decodable {
     let location: String
     let desc: String
     let slug: String
-    let logo: String
+    let logo: SanityType.Image
 
     func makeUrl() {
         print("hi")

@@ -49,7 +49,7 @@ struct BedpressContainer: View {
                     .overlay(.yellow)
                     .padding(.bottom)
                 ScrollView {
-                    BedpressList(bedpresser: self.bedpressFetcher.sortAndDivide()[1])
+                    BedpressList(bedpresser: self.bedpressFetcher.sortAndDivide()[0])
                 }
                 .onAppear {
                     self.bedpressFetcher.fetchBedpresser()
@@ -132,7 +132,9 @@ struct BedpressList: View {
                             Text(bedpress.title)
                                 .font(.title3)
                             Spacer()
-                            Text(bedpress.date)
+                            let start = bedpress.date.startIndex
+                            let end = bedpress.date.index(start, offsetBy: 10)
+                            Text(bedpress.date[start..<end])
                         }
                     }
                 }

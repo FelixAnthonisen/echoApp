@@ -11,18 +11,6 @@ import Foundation
 import Combine
 import SDWebImageSwiftUI
 
-
-// https://stackoverflow.com/questions/24089999/how-do-you-create-a-swift-date-object
-extension Date {
-    init(_ dateString:String) {
-        let dateStringFormatter = DateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
-        let date = dateStringFormatter.date(from: dateString)!
-        self.init(timeInterval:0, since:date)
-    }
-}
-
 var bedpressQuery = """
 *[_type == "happening" && happeningType == "BEDPRES" && registrationDate != NULL && slug.current != NULL]{
     _id, title, date, companyLink, registrationDate,
@@ -109,18 +97,30 @@ class BedpressFetcher: ObservableObject {
         fetchBedpresserCancellable?.cancel()
         listenBedpresserCancellable?.cancel()
     }
-
+    func createDateFromIso(isoStr: String) -> Date {
+        let start: String.Index = isoStr.startIndex
+        let end: String.Index = isoStr.index(start, offsetBy: 10)
+        return Date(String(isoStr[start..<end]))
+    }
+    func bubbleSort(arr: [Bedpress]) -> [Bedpress] {
+        let n: Int = arr.count
+        var newArr: [Bedpress] = arr
+        for i in 0..<n{
+            for j in 0..<(n-i-1){
+                let d1: Date = createDateFromIso(isoStr: newArr[j].date)
+                let d2: Date = createDateFromIso(isoStr: newArr[j+1].date)
+                if d1 < d2 {
+                    newArr.swapAt(j, j+1)
+                }
+            }
+        }
+        return newArr
+    }
     func sortAndDivide() -> [[Bedpress]]{
         var previous: [Bedpress] = []
         var upcoming: [Bedpress] = []
         for i in 0..<bedpresser.count{
-            
-            let dateStr: String = bedpresser[i].date
-            
-            let start: String.Index = dateStr.startIndex
-            let end: String.Index = dateStr.index(start, offsetBy: 10)
-            let bedpressDate: Date = Date(String(dateStr[start..<end]))
-            
+            let bedpressDate: Date = createDateFromIso(isoStr: bedpresser[i].date)
             if (bedpressDate >= Date.now){
                 upcoming.append(bedpresser[i])
             }
@@ -128,7 +128,7 @@ class BedpressFetcher: ObservableObject {
                 previous.append(bedpresser[i])
             }
         }
-        return [previous, upcoming]
+        return [bubbleSort(arr: previous), bubbleSort(arr: upcoming)]
     }
 }
 

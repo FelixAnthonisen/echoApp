@@ -27,6 +27,7 @@
 		9B8DBF7E2938EB0D007E5178 /* Navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF7D2938EB0D007E5178 /* Navbar.swift */; };
 		9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF7F2938EC23007E5178 /* MainContent.swift */; };
 		9BCFBA9C293E5BEB002BB6F8 /* testview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFBA9B293E5BEB002BB6F8 /* testview.swift */; };
+		9BCFBA9F293E8289002BB6F8 /* dateExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFBA9E293E8289002BB6F8 /* dateExtender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		9B8DBF7D2938EB0D007E5178 /* Navbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navbar.swift; sourceTree = "<group>"; };
 		9B8DBF7F2938EC23007E5178 /* MainContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContent.swift; sourceTree = "<group>"; };
 		9BCFBA9B293E5BEB002BB6F8 /* testview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testview.swift; sourceTree = "<group>"; };
+		9BCFBA9E293E8289002BB6F8 /* dateExtender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateExtender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		9B8DBF6B2938E7D3007E5178 /* echoApp */ = {
 			isa = PBXGroup;
 			children = (
+				9BCFBA9D293E8263002BB6F8 /* Util */,
 				9B8DBF6C2938E7D3007E5178 /* echoAppApp.swift */,
 				9B8DBF6E2938E7D3007E5178 /* ContentView.swift */,
 				9B8DBF7A2938E9BF007E5178 /* Views */,
@@ -135,6 +138,14 @@
 				520E5700293C005C00464310 /* EventInfoBox.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9BCFBA9D293E8263002BB6F8 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				9BCFBA9E293E8289002BB6F8 /* dateExtender.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +241,7 @@
 				52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */,
 				9B7E901A293CEDFB008D8C09 /* BedpressContainer.swift in Sources */,
 				52F512412938EEC9009FEB14 /* Login.swift in Sources */,
+				9BCFBA9F293E8289002BB6F8 /* dateExtender.swift in Sources */,
 				520E56F9293BB1CA00464310 /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

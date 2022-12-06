@@ -16,31 +16,18 @@ struct EventContainer: View {
     
     
     let title: String
-    @State private var expandView = false
+    @State private var eventExpanded = false
     @ObservedObject private var eventFetcher = EventFetcher()
     
+    
+    
     var body: some View {
-        NavigationStack {
+        Button(action: {eventExpanded.toggle()}){
             VStack {
-                HStack {
-                    Spacer()
-                    Text(title)
-                        .fontWeight(.bold)
-                        .font(.title)
-                        .foregroundColor(.white)
-                    .padding()
-                    Button (action: {
-                        withAnimation(.easeInOut(duration: 4))  {
-                            self.expandView.toggle()
-                        }
-                    }) {
-                        Image(systemName: "arrow.up.left.and.arrow.down.right")
-                            .foregroundColor(.white)
-                            .imageScale(.large)
-                            .rotationEffect(Angle(degrees: 90))
-                            .padding(.horizontal, 20)
-                    }
-                }
+                Text(title)
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .foregroundColor(.white)
                 Divider()
                     .overlay(.yellow)
                     .padding(.bottom)
@@ -55,6 +42,49 @@ struct EventContainer: View {
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(echoGradient, lineWidth: 0.5)
             )
+        }
+        .sheet(isPresented: $eventExpanded){
+            ExpandedEvent(eventFetcher: self.eventFetcher)
+        }
+    }
+}
+
+struct ExpandedEvent: View {
+    @ObservedObject var eventFetcher: EventFetcher
+    var body: some View {
+        NavigationStack{
+            VStack{
+                Text("Arrangementer")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.white)
+                Divider()
+                    .overlay(.white)
+                ScrollView {
+                    ForEach(eventFetcher.sortAndDivide()[0], id: \._id) { event in
+                        NavigationLink(destination: {
+                            EventView(title: event.title,
+                                      date: event.date,
+                                      desc: event.desc,
+                                      slug: event.slug
+                            )
+                        }){
+                            HStack {
+                                Text(event.title)
+                                    .font(.title3)
+                                Spacer()
+                                let start = event.date.startIndex
+                                let end = event.date.index(start, offsetBy: 10)
+                                Text(event.date[start..<end])
+                            }
+                            .foregroundColor(.white)
+                            .padding(.vertical)
+                        }
+                    }
+                }
+            }
+            .padding(20)
+            .background(Util.gradient())
         }
     }
 }

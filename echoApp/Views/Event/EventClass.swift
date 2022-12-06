@@ -118,7 +118,6 @@ class EventFetcher: ObservableObject {
     func sortAndDivide() -> [[Event]]{
         var previous: [Event] = []
         var upcoming: [Event] = []
-        print(self.events)
         for i in 0..<events.count{
             let eventDate: Date = createDateFromIso(isoStr: events[i].date)
             if (eventDate >= Date.now){
@@ -128,8 +127,6 @@ class EventFetcher: ObservableObject {
                 previous.append(events[i])
             }
         }
-        print(previous)
-        print(upcoming)
         return [bubbleSort(arr: previous, minSorted: false), bubbleSort(arr: upcoming, minSorted: true)]
     }
 }

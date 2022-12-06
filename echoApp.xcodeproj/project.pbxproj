@@ -28,6 +28,7 @@
 		9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF7F2938EC23007E5178 /* MainContent.swift */; };
 		9BCFBA9C293E5BEB002BB6F8 /* testview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFBA9B293E5BEB002BB6F8 /* testview.swift */; };
 		9BCFBA9F293E8289002BB6F8 /* dateExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFBA9E293E8289002BB6F8 /* dateExtender.swift */; };
+		9BCFBAA1293FB7D5002BB6F8 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFBAA0293FB7D5002BB6F8 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		9B8DBF7F2938EC23007E5178 /* MainContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContent.swift; sourceTree = "<group>"; };
 		9BCFBA9B293E5BEB002BB6F8 /* testview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testview.swift; sourceTree = "<group>"; };
 		9BCFBA9E293E8289002BB6F8 /* dateExtender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateExtender.swift; sourceTree = "<group>"; };
+		9BCFBAA0293FB7D5002BB6F8 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				9BCFBA9E293E8289002BB6F8 /* dateExtender.swift */,
+				9BCFBAA0293FB7D5002BB6F8 /* Util.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				52F512412938EEC9009FEB14 /* Login.swift in Sources */,
 				9BCFBA9F293E8289002BB6F8 /* dateExtender.swift in Sources */,
 				520E56F9293BB1CA00464310 /* ErrorView.swift in Sources */,
+				9BCFBAA1293FB7D5002BB6F8 /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

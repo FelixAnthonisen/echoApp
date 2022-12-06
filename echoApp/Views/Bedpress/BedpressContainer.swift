@@ -30,6 +30,7 @@ struct CircleImage: View{
 }
 
 struct BedpressContainer: View {
+    @State private var bedpressExpanded = false
     let echoGradient = LinearGradient(
         colors: [.yellow, .teal],
         startPoint: .top, endPoint: .bottom)
@@ -38,7 +39,7 @@ struct BedpressContainer: View {
     @ObservedObject private var bedpressFetcher = BedpressFetcher()
     
     var body: some View {
-        NavigationStack {
+        Button(action: {bedpressExpanded.toggle()}) {
             VStack {
                 Text(title)
                     .fontWeight(.bold)
@@ -60,6 +61,55 @@ struct BedpressContainer: View {
                         .stroke(echoGradient, lineWidth: 0.5)
                 )
                 .padding(.vertical)
+        }
+        .sheet(isPresented: $bedpressExpanded){
+            ExpandedBedpress(bedpressFetcher: bedpressFetcher)
+        }
+    }
+}
+struct ExpandedBedpress: View {
+    @ObservedObject var bedpressFetcher: BedpressFetcher
+    var body: some View {
+        NavigationStack{
+            VStack{
+                Text("Bedpresser")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.white)
+                Divider()
+                    .overlay(.white)
+                ScrollView {
+                    ForEach(bedpressFetcher.sortAndDivide()[0], id: \._id) { bedpress in
+                        NavigationLink(destination: {
+                         BedpressView(
+                             _id: bedpress._id,
+                             title: bedpress.title,
+                             date: bedpress.date,
+                             companyLink: bedpress.companyLink,
+                             registrationDate: bedpress.registrationDate,
+                             location: bedpress.location,
+                             desc: bedpress.desc,
+                             slug: bedpress.slug,
+                             logo: bedpress.logo
+                         )
+                        }){
+                            HStack {
+                                CircleImage(logo: bedpress.logo)
+                                Text(bedpress.title)
+                                    .font(.title3)
+                                Spacer()
+                                let start = bedpress.date.startIndex
+                                let end = bedpress.date.index(start, offsetBy: 10)
+                                Text(bedpress.date[start..<end])
+                            }
+                            .foregroundColor(.white)
+                            .padding(.vertical)
+                        }
+                    }
+                }
+            }
+            .padding(20)
+            .background(Util.gradient())
         }
     }
 }
@@ -103,6 +153,20 @@ struct BedpressView: View {
     }
 }
 
+
+/**NavigationLink(destination: {
+ BedpressView(
+     _id: bedpress._id,
+     title: bedpress.title,
+     date: bedpress.date,
+     companyLink: bedpress.companyLink,
+     registrationDate: bedpress.registrationDate,
+     location: bedpress.location,
+     desc: bedpress.desc,
+     slug: bedpress.slug,
+     logo: bedpress.logo
+ )
+}) */
 struct BedpressList: View {
     let bedpresser: [Bedpress]
     
@@ -110,36 +174,20 @@ struct BedpressList: View {
         VStack {
             let slice = self.bedpresser.count > 3 ? Array(self.bedpresser[...3]) : self.bedpresser
             ForEach(slice, id: \._id) { bedpress in
-                VStack (alignment: .leading) {
-                    NavigationLink(destination: {
-                        BedpressView(
-                            _id: bedpress._id,
-                            title: bedpress.title,
-                            date: bedpress.date,
-                            companyLink: bedpress.companyLink,
-                            registrationDate: bedpress.registrationDate,
-                            location: bedpress.location,
-                            desc: bedpress.desc,
-                            slug: bedpress.slug,
-                            logo: bedpress.logo
-                        )
-                    }) {
-                        HStack {
-                            CircleImage(logo: bedpress.logo)
-                            Text(bedpress.title)
-                                .font(.title3)
-                            Spacer()
-                            let start = bedpress.date.startIndex
-                            let end = bedpress.date.index(start, offsetBy: 10)
-                            Text(bedpress.date[start..<end])
-                        }
-                    }
+                HStack {
+                    CircleImage(logo: bedpress.logo)
+                    Text(bedpress.title)
+                        .font(.title3)
+                    Spacer()
+                    let start = bedpress.date.startIndex
+                    let end = bedpress.date.index(start, offsetBy: 10)
+                    Text(bedpress.date[start..<end])
                 }
-                .foregroundColor(.white)
-                .padding(.bottom, 10)
-                .padding(.horizontal, 10)
             }
         }
+        .foregroundColor(.white)
+        .padding(.bottom, 10)
+        .padding(.horizontal, 10)
     }
 }
     

@@ -102,14 +102,17 @@ class BedpressFetcher: ObservableObject {
         let end: String.Index = isoStr.index(start, offsetBy: 10)
         return Date(String(isoStr[start..<end]))
     }
-    func bubbleSort(arr: [Bedpress]) -> [Bedpress] {
+    func bubbleSort(arr: [Bedpress], minSorted: Bool) -> [Bedpress] {
         let n: Int = arr.count
         var newArr: [Bedpress] = arr
         for i in 0..<n{
             for j in 0..<(n-i-1){
                 let d1: Date = createDateFromIso(isoStr: newArr[j].date)
                 let d2: Date = createDateFromIso(isoStr: newArr[j+1].date)
-                if d1 < d2 {
+                if (d1 > d2 && minSorted){
+                    newArr.swapAt(j, j+1)
+                }
+                else if (d1 < d2 && !minSorted){
                     newArr.swapAt(j, j+1)
                 }
             }
@@ -128,7 +131,7 @@ class BedpressFetcher: ObservableObject {
                 previous.append(bedpresser[i])
             }
         }
-        return [bubbleSort(arr: previous), bubbleSort(arr: upcoming)]
+        return [bubbleSort(arr: previous, minSorted: false), bubbleSort(arr: upcoming, minSorted: true)]
     }
 }
 

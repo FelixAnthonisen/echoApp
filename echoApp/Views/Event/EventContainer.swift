@@ -29,7 +29,6 @@ struct EventContainer: View {
                         .font(.title)
                         .foregroundColor(.white)
                     .padding()
-                    
                     Button (action: {
                         withAnimation(.easeInOut(duration: 4))  {
                             self.expandView.toggle()
@@ -45,31 +44,17 @@ struct EventContainer: View {
                 Divider()
                     .overlay(.yellow)
                     .padding(.bottom)
-                ScrollView {
-                    EventList(events: self.eventFetcher.events)
-                }
-                .onAppear {
-                    self.eventFetcher.fetchEvents()
-                    self.eventFetcher.listenEvents()
-                }
-                
+                EventList(events: self.eventFetcher.events)
+                    .onAppear {
+                        self.eventFetcher.fetchEvents()
+                        self.eventFetcher.listenEvents()
+                    }
             }
             .padding(.bottom)
             .overlay(
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(echoGradient, lineWidth: 0.5)
             )
-            /*.sheet(isPresented: $expandView) {
-                Section {
-                    EventListExpaneded(events: self.eventFetcher.events)
-                }
-                .presentationDetents([.fraction(0.5)])
-            }*/
-            if expandView {
-                EventListExpaneded(events: self.eventFetcher.events)
-            }
-            
-            
         }
     }
 }
@@ -133,27 +118,32 @@ struct EventList: View {
     let events: [Event]
     
     var body: some View {
-        ForEach(self.events, id: \._id) { event in
-            VStack (alignment: .leading) {
-                NavigationLink(destination: {
-                    EventView(title: event.title,
-                              date: event.date,
-                              desc: event.desc,
-                              slug: event.slug
-                    )
-                }) {
-                    HStack {
-                        Text(event.title)
-                            .font(.title3)
-                        Spacer()
+        VStack{
+            let slice = self.events.count > 3 ? Array(self.events[...3]) : self.events
+            ForEach(slice, id: \._id) { event in
+                VStack (alignment: .leading) {
+                    NavigationLink(destination: {
+                        EventView(title: event.title,
+                                  date: event.date,
+                                  desc: event.desc,
+                                  slug: event.slug
+                        )
+                    }) {
+                        HStack {
+                            Text(event.title)
+                                .font(.title3)
+                            Spacer()
+                            let start = event.date.startIndex
+                            let end = event.date.index(start, offsetBy: 10)
+                            Text(event.date[start..<end])
+                        }
                     }
                 }
+                .foregroundColor(.white)
+                .padding(.bottom, 10)
+                .padding(.horizontal, 10)
             }
-            .foregroundColor(.white)
-            .padding(.bottom, 10)
-            .padding(.horizontal, 10)
         }
-        
     }
 }
 

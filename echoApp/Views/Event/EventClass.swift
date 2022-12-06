@@ -85,10 +85,51 @@ class EventFetcher: ObservableObject {
                     self.events[index] = self.events[index].merge(with: event)
                 }
             }
-        }
+    }
     
     func cancel() {
         fetchEventsCancellable?.cancel()
         listenEventsCancellable?.cancel()
+    }
+    
+    func createDateFromIso(isoStr: String) -> Date {
+        let start: String.Index = isoStr.startIndex
+        let end: String.Index = isoStr.index(start, offsetBy: 10)
+        return Date(String(isoStr[start..<end]))
+    }
+    
+    func bubbleSort(arr: [Event], minSorted: Bool) -> [Event] {
+        let n: Int = arr.count
+        var newArr: [Event] = arr
+        for i in 0..<n{
+            for j in 0..<(n-i-1){
+                let d1: Date = createDateFromIso(isoStr: newArr[j].date)
+                let d2: Date = createDateFromIso(isoStr: newArr[j+1].date)
+                if (d1 > d2 && minSorted){
+                    newArr.swapAt(j, j+1)
+                }
+                else if (d1 < d2 && !minSorted){
+                    newArr.swapAt(j, j+1)
+                }
+            }
+        }
+        return newArr
+    }
+    func sortAndDivide() -> [[Event]]{
+        var previous: [Event] = []
+        var upcoming: [Event] = []
+        print(self.events)
+        for i in 0..<events.count{
+            let eventDate: Date = createDateFromIso(isoStr: events[i].date)
+            if (eventDate >= Date.now){
+                upcoming.append(events[i])
+            }
+            else{
+                previous.append(events[i])
+            }
+        }
+        print(previous)
+        print(upcoming)
+        return [bubbleSort(arr: previous, minSorted: false), bubbleSort(arr: upcoming, minSorted: true)]
     }
 }

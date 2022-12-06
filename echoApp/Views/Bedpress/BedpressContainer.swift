@@ -48,14 +48,11 @@ struct BedpressContainer: View {
                 Divider()
                     .overlay(.yellow)
                     .padding(.bottom)
-                ScrollView {
-                    BedpressList(bedpresser: self.bedpressFetcher.sortAndDivide()[0])
-                }
-                .onAppear {
-                    self.bedpressFetcher.fetchBedpresser()
-                    self.bedpressFetcher.listenBedpresser()
-                }
-                
+                BedpressList(bedpresser: self.bedpressFetcher.sortAndDivide()[0])
+                    .onAppear {
+                        self.bedpressFetcher.fetchBedpresser()
+                        self.bedpressFetcher.listenBedpresser()
+                    }
             }
             .padding(.bottom)
                 .overlay(
@@ -111,8 +108,8 @@ struct BedpressList: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "profile")
-            ForEach(self.bedpresser, id: \._id) { bedpress in
+            let slice = self.bedpresser.count > 3 ? Array(self.bedpresser[...3]) : self.bedpresser
+            ForEach(slice, id: \._id) { bedpress in
                 VStack (alignment: .leading) {
                     NavigationLink(destination: {
                         BedpressView(

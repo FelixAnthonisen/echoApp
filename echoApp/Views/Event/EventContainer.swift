@@ -20,7 +20,6 @@ struct EventContainer: View {
     @ObservedObject private var eventFetcher = EventFetcher()
     
     
-    
     var body: some View {
         Button(action: {eventExpanded.toggle()}){
             VStack {
@@ -28,6 +27,7 @@ struct EventContainer: View {
                     .fontWeight(.bold)
                     .font(.title)
                     .foregroundColor(.white)
+                    .padding()
                 Divider()
                     .overlay(.yellow)
                     .padding(.bottom)
@@ -151,70 +151,18 @@ struct EventList: View {
         VStack{
             let slice = self.events.count > 3 ? Array(self.events[...3]) : self.events
             ForEach(slice, id: \._id) { event in
-                VStack (alignment: .leading) {
-                    NavigationLink(destination: {
-                        EventView(title: event.title,
-                                  date: event.date,
-                                  desc: event.desc,
-                                  slug: event.slug
-                        )
-                    }) {
-                        HStack {
-                            Text(event.title)
-                                .font(.title3)
-                            Spacer()
-                            let start = event.date.startIndex
-                            let end = event.date.index(start, offsetBy: 10)
-                            Text(event.date[start..<end])
-                        }
-                    }
+                HStack {
+                    Text(event.title)
+                        .font(.title3)
+                    Spacer()
+                    let start = event.date.startIndex
+                    let end = event.date.index(start, offsetBy: 10)
+                    Text(event.date[start..<end])
                 }
                 .foregroundColor(.white)
                 .padding(.bottom, 10)
                 .padding(.horizontal, 10)
             }
         }
-    }
-}
-
-struct EventListExpaneded: View {
-    let events: [Event]
-    
-    var body: some View {
-        
-        //NavigationStack {
-            VStack {
-                Text("Arrangementer")
-                    .font(.title)
-                    .foregroundColor(.white)
-                ScrollView {
-                    ForEach(self.events, id: \._id) { event in
-                        VStack (alignment: .leading) {
-                            NavigationLink(destination: {
-                                EventView(title: event.title,
-                                          date: event.date,
-                                          desc: event.desc,
-                                          slug: event.slug
-                                )
-                            }) {
-                                HStack {
-                                    Text(event.title)
-                                        .font(.title3)
-                                    Spacer()
-                                }
-                            }
-                        }
-                        .foregroundColor(.white)
-                        .padding(.bottom, 10)
-                        .padding(.horizontal, 10)
-                    }
-                }
-                .padding(.vertical)
-                
-            }
-            .background(.yellow)
-            
-        //}
-        
     }
 }

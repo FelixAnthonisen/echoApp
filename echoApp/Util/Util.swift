@@ -55,6 +55,7 @@ struct SquareImage: View {
         .resizable()
         .scaledToFit()
         .frame(width: 120, alignment: .center)
+        .cornerRadius(10)
     }
 }
 

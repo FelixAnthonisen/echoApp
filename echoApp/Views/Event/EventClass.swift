@@ -13,7 +13,7 @@ import SDWebImageSwiftUI
 
 
 var eventQuery = """
-*[_type == "happening" && happeningType == "EVENT"] {
+*[_type == "happening" && happeningType == "EVENT" && registrationDate != NULL && slug.current != NULL] {
   _id, title, date, location, registrationDate, 
   "desc": body.no,
   "slug": slug.current
@@ -32,6 +32,8 @@ struct Event: Decodable {
     let _id: String
     let title: String
     let date: String
+    let location: String
+    let registrationDate: String
     let desc: String
     let slug: String
     
@@ -40,6 +42,8 @@ struct Event: Decodable {
             _id: with._id,
             title: with.title,
             date: with.date,
+            location: with.location,
+            registrationDate: with.registrationDate,
             desc: with.desc,
             slug: with.slug
         )

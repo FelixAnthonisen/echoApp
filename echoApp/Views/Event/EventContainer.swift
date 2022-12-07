@@ -6,22 +6,18 @@
 //
 
 import SwiftUI
-let backgroundGradient = LinearGradient(
-    colors: [Color("GradientStart"), Color("GradientEnd")],
-    startPoint: .top, endPoint: .bottom)
+
+
 struct EventContainer: View {
-    let echoGradient = LinearGradient(
-        colors: [.yellow, .teal],
-        startPoint: .top, endPoint: .bottom)
-    
-    
+
     let title: String
     @State private var eventExpanded = false
     @ObservedObject private var eventFetcher = EventFetcher()
     
-    
     var body: some View {
-        Button(action: {eventExpanded.toggle()}){
+        Button(action: {
+            self.eventExpanded.toggle()
+        }){
             VStack {
                 Text(title)
                     .fontWeight(.bold)
@@ -50,8 +46,8 @@ struct EventContainer: View {
 struct ExpandedEvent: View {
     @ObservedObject var eventFetcher: EventFetcher
     var body: some View {
-        NavigationStack{
-            VStack{
+        NavigationStack {
+            VStack {
                 Text("Arrangementer")
                     .font(.largeTitle)
                     .bold()
@@ -61,11 +57,15 @@ struct ExpandedEvent: View {
                 ScrollView {
                     ForEach(eventFetcher.sortAndDivide()[0], id: \._id) { event in
                         NavigationLink(destination: {
-                            EventView(title: event.title,
-                                      date: event.date,
-                                      desc: event.desc,
-                                      slug: event.slug
-                            )
+                         EventView(
+                             _id: event._id,
+                             title: event.title,
+                             date: event.date,
+                             registrationDate: event.registrationDate,
+                             location: event.location,
+                             desc: event.desc,
+                             slug: event.slug
+                         )
                         }){
                             HStack {
                                 Text(event.title)
@@ -88,56 +88,49 @@ struct ExpandedEvent: View {
 }
 
 struct EventView: View {
-    //let _id: String
+    
+    let _id: String
     let title: String
     let date: String
+    let registrationDate: String
+    let location: String
     let desc: String
     let slug: String
     
     var body: some View {
-        VStack {
-            Text(title)
-                .font(.title)
-                .foregroundColor(.white)
-                .padding()
-
-            let start = date.startIndex
-            
-            let end = date.index(start, offsetBy: 10)
-            
+        ScrollView(.vertical) {
             HStack {
-                Text(date[start..<end])
-                    .font(.title3)
-                .foregroundColor(.white)
-                Spacer()
-                Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!){
-                    Button (action: {
-                        // bare for å komme til linken og ha riktig styling
-                    }) {
-                        Text("Påmelding")
-                            .foregroundColor(.black)
-                            .font(.title2)
+                VStack {
+                    //Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!) {
+                        Text(title)
+                            .font(.title)
                             .bold()
-                    }
-                    .padding([.horizontal], 20)
-                    .padding([.vertical], 10)
-                    .background(.teal)
-                    .foregroundColor(.white)
-                    .cornerRadius(20)
+                            .padding()
+                    //}
+                    LinkButton(slug: slug, label: "Til påmelding")
                 }
-                
-            }.padding()
-            Divider()
-                .overlay(.white)
-                .padding(.bottom)
-            ScrollView {
-                Text(desc)
-                    .foregroundColor(.white)
-                    .padding()
+                .padding()
             }
+            .padding()
+            
+            InfoBox(date: self.date, registrationDate: self.registrationDate, location: self.location, contactEmail: "torgerboc@gmail.com")
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(Util.echoGradient(), lineWidth: 0.5)
+                )
+                .padding()
+            Text(desc)
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(Util.echoGradient(), lineWidth: 0.5)
+                )
+                .padding()
             Spacer()
         }
-        .background(backgroundGradient)
+        .foregroundColor(.white)
+        .background(Util.gradient())
         
     }
 }

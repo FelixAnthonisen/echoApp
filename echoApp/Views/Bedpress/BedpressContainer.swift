@@ -11,17 +11,15 @@ import SDWebImageSwiftUI
 
 
 struct BedpressContainer: View {
-    @State private var bedpressExpanded = false
-    let echoGradient = LinearGradient(
-        colors: [.yellow, .teal],
-        startPoint: .top, endPoint: .bottom)
     
     let title: String
+    @State private var bedpressExpanded = false
     @ObservedObject private var bedpressFetcher = BedpressFetcher()
     
-    
     var body: some View {
-        Button(action: {bedpressExpanded.toggle()}) {
+        Button(action: {
+            self.bedpressExpanded.toggle()
+        }) {
             VStack {
                 Text(title)
                     .fontWeight(.bold)
@@ -49,8 +47,8 @@ struct BedpressContainer: View {
 struct ExpandedBedpress: View {
     @ObservedObject var bedpressFetcher: BedpressFetcher
     var body: some View {
-        NavigationStack{
-            VStack{
+        NavigationStack {
+            VStack {
                 Text("Bedpresser")
                     .font(.largeTitle)
                     .bold()
@@ -127,13 +125,13 @@ struct BedpressView: View {
             }
             .padding()
             
-            BedpressInfoBox(date: self.date, registrationDate: self.registrationDate, location: self.location, contactEmail: "String@gmail.com")
-                .padding()
+            InfoBox(date: self.date, registrationDate: self.registrationDate, location: self.location, contactEmail: "torgerboc@gmail.com")
+                /*.padding()
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)
                         .stroke(Util.echoGradient(), lineWidth: 0.5)
                 )
-                .padding()
+                .padding()*/
             Text(desc)
                 .padding()
                 .overlay(

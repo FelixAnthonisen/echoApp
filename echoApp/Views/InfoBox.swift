@@ -2,12 +2,12 @@
 //  EventInfoBox.swift
 //  echoApp
 //
-//  Created by Torger Bocianowski on 03/12/2022.
+//  Created by Torger Bocianowski on 07/12/2022.
 //
 
 import SwiftUI
 
-struct BedpressInfoBox: View {
+struct InfoBox: View {
     let date: String
     let registrationDate: String
     let location: String
@@ -41,6 +41,10 @@ struct BedpressInfoBox: View {
             }
             
         }
+        .padding()
+        .background(Util.lightGradient())
+        .cornerRadius(20)
+        .bold()
     }
 }
 

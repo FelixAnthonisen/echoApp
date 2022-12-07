@@ -29,7 +29,7 @@ struct EventContainer: View {
                     .foregroundColor(.white)
                     .padding()
                 Divider()
-                    .overlay(.yellow)
+                    .overlay(.white)
                     .padding(.bottom)
                 EventList(events: self.eventFetcher.sortAndDivide()[0])
                     .onAppear {
@@ -37,12 +37,10 @@ struct EventContainer: View {
                         self.eventFetcher.listenEvents()
                     }
             }
-            .padding(.bottom)
-            .overlay(
-                RoundedRectangle(cornerRadius: 30)
-                    .stroke(echoGradient, lineWidth: 0.5)
-            )
+            .background(Util.lightGradient())
         }
+        .cornerRadius(20)
+        .padding(.bottom)
         .sheet(isPresented: $eventExpanded){
             ExpandedEvent(eventFetcher: self.eventFetcher)
         }

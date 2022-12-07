@@ -16,6 +16,11 @@ class Util{
             colors: [Color("GradientStart"), Color("GradientEnd")],
             startPoint: .top, endPoint: .bottom)
     }
+    class func lightGradient() -> LinearGradient {
+        return LinearGradient(
+            colors: [Color("LightGradientStart"), Color("LightGradientEnd")],
+            startPoint: .top, endPoint: .bottom)
+    }
     class func echoGradient() -> LinearGradient {
         return LinearGradient(
             colors: [.yellow, .teal],

@@ -12,20 +12,24 @@ struct Navbar: View {
     @State private var isLoggedIn = false
     @State private var showProfile = false
     var body: some View {
-        HStack {
-            Link(destination: URL(string: "https://echo.uib.no/")!) {
-                Image("echoLogo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
+        ZStack {
+            HStack {
+                Link(destination: URL(string: "https://echo.uib.no/")!) {
+                    Image("echoLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                }
+                Spacer()
             }
-            Spacer()
-            Text("echo")
-                .fontWeight(.bold)
-                .font(Font.system(size: 35))
-                .foregroundColor(.white)
-            Spacer()
-            Button(action: {
+            Link(destination: URL(string: "https://echo.uib.no/")!) {
+                Text("echo")
+                    .fontWeight(.bold)
+                    .font(Font.system(size: 35))
+                    .foregroundColor(.white)
+            }
+            // endra fra hstack til zstack med en hstack inni
+            /*Button(action: {
                 self.showProfile.toggle()
             }){
                 Image(systemName: "person.crop.circle")
@@ -46,7 +50,7 @@ struct Navbar: View {
                 .background(.black)
                 .environmentObject(session)
                 .presentationDetents([.fraction(0.5)])
-            }
+            }*/
             
         }
         .padding()

@@ -29,7 +29,7 @@ struct BedpressContainer: View {
                     .foregroundColor(.white)
                     .padding()
                 Divider()
-                    .overlay(.yellow)
+                    .overlay(.white)
                     .padding(.bottom)
                 BedpressList(bedpresser: self.bedpressFetcher.sortAndDivide()[0])
                     .onAppear {
@@ -37,13 +37,10 @@ struct BedpressContainer: View {
                         self.bedpressFetcher.listenBedpresser()
                     }
             }
-            .padding(.bottom)
-            .overlay(
-                RoundedRectangle(cornerRadius: 30)
-                    .stroke(echoGradient, lineWidth: 0.5)
-            )
-            .padding(.vertical)
+            .background(Util.lightGradient())
         }
+        .cornerRadius(20)
+        .padding(.bottom)
         .sheet(isPresented: $bedpressExpanded){
             ExpandedBedpress(bedpressFetcher: bedpressFetcher)
         }

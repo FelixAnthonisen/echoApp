@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		520E56F7293BAFBD00464310 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 520E56F6293BAFBD00464310 /* SDWebImageSwiftUI */; };
 		520E56F9293BB1CA00464310 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E56F8293BB1CA00464310 /* ErrorView.swift */; };
-		520E5701293C005C00464310 /* EventInfoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E5700293C005C00464310 /* EventInfoBox.swift */; };
+		520E5701293C005C00464310 /* BedpressInfoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E5700293C005C00464310 /* BedpressInfoBox.swift */; };
 		520E5703293C02EC00464310 /* BedpressClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E5702293C02EC00464310 /* BedpressClass.swift */; };
 		52F05ABC293B4C67001EF591 /* Sanity in Frameworks */ = {isa = PBXBuildFile; productRef = 52F05ABB293B4C67001EF591 /* Sanity */; };
 		52F05ABE293B5272001EF591 /* SanityTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F05ABD293B5272001EF591 /* SanityTester.swift */; };
@@ -17,6 +17,7 @@
 		52F512432938EEEC009FEB14 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512422938EEEC009FEB14 /* Profile.swift */; };
 		52F512452938EFC9009FEB14 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F512442938EFC9009FEB14 /* SessionManager.swift */; };
 		52F5124D293A1104009FEB14 /* EventClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5124C293A1104009FEB14 /* EventClass.swift */; };
+		52F7C3242940D4CC007944E3 /* CalendarUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F7C3232940D4CC007944E3 /* CalendarUtil.swift */; };
 		9B7E9018293CEDDD008D8C09 /* EventContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E9017293CEDDD008D8C09 /* EventContainer.swift */; };
 		9B7E901A293CEDFB008D8C09 /* BedpressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */; };
 		9B8DBF6D2938E7D3007E5178 /* echoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF6C2938E7D3007E5178 /* echoAppApp.swift */; };
@@ -33,13 +34,14 @@
 
 /* Begin PBXFileReference section */
 		520E56F8293BB1CA00464310 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		520E5700293C005C00464310 /* EventInfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoBox.swift; sourceTree = "<group>"; };
+		520E5700293C005C00464310 /* BedpressInfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedpressInfoBox.swift; sourceTree = "<group>"; };
 		520E5702293C02EC00464310 /* BedpressClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedpressClass.swift; sourceTree = "<group>"; };
 		52F05ABD293B5272001EF591 /* SanityTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityTester.swift; sourceTree = "<group>"; };
 		52F512402938EEC9009FEB14 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		52F512422938EEEC009FEB14 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52F512442938EFC9009FEB14 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		52F5124C293A1104009FEB14 /* EventClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventClass.swift; sourceTree = "<group>"; };
+		52F7C3232940D4CC007944E3 /* CalendarUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUtil.swift; sourceTree = "<group>"; };
 		9B7E9017293CEDDD008D8C09 /* EventContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContainer.swift; sourceTree = "<group>"; };
 		9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedpressContainer.swift; sourceTree = "<group>"; };
 		9B8DBF692938E7D3007E5178 /* echoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = echoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 		9B7E9015293CEC17008D8C09 /* Bedpress */ = {
 			isa = PBXGroup;
 			children = (
+				520E5700293C005C00464310 /* BedpressInfoBox.swift */,
 				520E5702293C02EC00464310 /* BedpressClass.swift */,
 				9BCFBA9B293E5BEB002BB6F8 /* testview.swift */,
 				9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */,
@@ -137,7 +140,6 @@
 				52F512402938EEC9009FEB14 /* Login.swift */,
 				52F512422938EEEC009FEB14 /* Profile.swift */,
 				520E56F8293BB1CA00464310 /* ErrorView.swift */,
-				520E5700293C005C00464310 /* EventInfoBox.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,6 +149,7 @@
 			children = (
 				9BCFBA9E293E8289002BB6F8 /* dateExtender.swift */,
 				9BCFBAA0293FB7D5002BB6F8 /* Util.swift */,
+				52F7C3232940D4CC007944E3 /* CalendarUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -229,8 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				520E5701293C005C00464310 /* EventInfoBox.swift in Sources */,
+				520E5701293C005C00464310 /* BedpressInfoBox.swift in Sources */,
 				9B8DBF7C2938E9CE007E5178 /* Footer.swift in Sources */,
+				52F7C3242940D4CC007944E3 /* CalendarUtil.swift in Sources */,
 				9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */,
 				9B8DBF7E2938EB0D007E5178 /* Navbar.swift in Sources */,
 				9BCFBA9C293E5BEB002BB6F8 /* testview.swift in Sources */,
@@ -378,6 +382,7 @@
 				DEVELOPMENT_TEAM = Y79NN7Q353;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Godta for å legge til i kalender";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Bruk FaceID til å logge inn";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -408,6 +413,7 @@
 				DEVELOPMENT_TEAM = Y79NN7Q353;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Godta for å legge til i kalender";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Bruk FaceID til å logge inn";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

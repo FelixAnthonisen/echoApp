@@ -31,7 +31,7 @@ struct EventContainer: View {
                 Divider()
                     .overlay(.yellow)
                     .padding(.bottom)
-                EventList(events: self.eventFetcher.events)
+                EventList(events: self.eventFetcher.sortAndDivide()[0])
                     .onAppear {
                         self.eventFetcher.fetchEvents()
                         self.eventFetcher.listenEvents()

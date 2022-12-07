@@ -10,25 +10,6 @@ import Sanity
 import SDWebImageSwiftUI
 
 
-
-
-struct CircleImage: View{
-    let client = SanityClient(projectId: "pgq2pd26", dataset: "production", useCdn: false)
-    let logo: SanityType.Image
-    var body: some View {
-        WebImage(url: client.imageURL(self.logo)
-            .URL()
-        )
-        .resizable()
-        .scaledToFit()
-        .frame(width: 40, height: 40, alignment: .center)
-        .clipShape(Circle())
-        .overlay {
-            Circle().stroke(.white, lineWidth: 1)
-        }
-    }
-}
-
 struct BedpressContainer: View {
     @State private var bedpressExpanded = false
     let echoGradient = LinearGradient(
@@ -37,6 +18,7 @@ struct BedpressContainer: View {
     
     let title: String
     @ObservedObject private var bedpressFetcher = BedpressFetcher()
+    
     
     var body: some View {
         Button(action: {bedpressExpanded.toggle()}) {
@@ -56,11 +38,11 @@ struct BedpressContainer: View {
                     }
             }
             .padding(.bottom)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(echoGradient, lineWidth: 0.5)
-                )
-                .padding(.vertical)
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(echoGradient, lineWidth: 0.5)
+            )
+            .padding(.vertical)
         }
         .sheet(isPresented: $bedpressExpanded){
             ExpandedBedpress(bedpressFetcher: bedpressFetcher)
@@ -126,47 +108,50 @@ struct BedpressView: View {
     let slug: String
     let logo: SanityType.Image
     
+    public var calendarAccesser = CalendarUtil()
+    
     var body: some View {
-        VStack {
-            CircleImage(logo: self.logo)
-            Link(destination: URL(string: "https://echo.uib.no/event/\(slug.replacingOccurrences(of: " ", with: "%20"))")!){
-                Text(title)
-                    .font(.title)
-                    .foregroundColor(.white)
+        ScrollView(.vertical) {
+            HStack {
+                SquareImage(logo: self.logo)
                     .padding()
+                Spacer()
+                
+                VStack {
+                    Link(destination: URL(string: companyLink)!) {
+                        Text(title)
+                            .font(.title)
+                            .bold()
+                            .padding()
+                    }
+                    LinkButton(slug: slug, label: "Til påmelding")
+                }
+                .padding()
             }
-
-            let start = date.startIndex
-            let end = date.index(start, offsetBy: 10)
-            Text(date[start..<end])
-                .font(.title3)
-                .foregroundColor(.white)
-            ScrollView {
-                Text(desc)
-                    .foregroundColor(.white)
-                    .padding()
-            }
+            .padding()
+            
+            BedpressInfoBox(date: self.date, registrationDate: self.registrationDate, location: self.location, contactEmail: "String@gmail.com")
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(Util.echoGradient(), lineWidth: 0.5)
+                )
+                .padding()
+            Text(desc)
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(Util.echoGradient(), lineWidth: 0.5)
+                )
+                .padding()
             Spacer()
         }
-        .background(.black)
+        .foregroundColor(.white)
+        .background(Util.gradient())
         
     }
 }
 
-
-/**NavigationLink(destination: {
- BedpressView(
-     _id: bedpress._id,
-     title: bedpress.title,
-     date: bedpress.date,
-     companyLink: bedpress.companyLink,
-     registrationDate: bedpress.registrationDate,
-     location: bedpress.location,
-     desc: bedpress.desc,
-     slug: bedpress.slug,
-     logo: bedpress.logo
- )
-}) */
 struct BedpressList: View {
     let bedpresser: [Bedpress]
     
@@ -192,3 +177,5 @@ struct BedpressList: View {
 }
     
     
+
+

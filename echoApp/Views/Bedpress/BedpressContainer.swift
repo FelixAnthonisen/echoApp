@@ -115,6 +115,7 @@ struct BedpressView: View {
                 VStack {
                     Link(destination: URL(string: companyLink)!) {
                         Text(title)
+                            .underline()
                             .font(.title)
                             .bold()
                             .padding()
@@ -125,21 +126,32 @@ struct BedpressView: View {
             }
             .padding()
             
-            InfoBox(date: self.date, registrationDate: self.registrationDate, location: self.location, contactEmail: "torgerboc@gmail.com")
-                /*.padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(Util.echoGradient(), lineWidth: 0.5)
-                )
-                .padding()*/
-            Text(desc)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(Util.echoGradient(), lineWidth: 0.5)
-                )
-                .padding()
-            Spacer()
+            
+            InfoBox(date: self.date,
+                    registrationDate: self.registrationDate,
+                    location: self.location,
+                    contactEmail: "example@gmail.com"
+            )
+            
+                    
+            VStack (alignment: .leading) {
+                Text("Mer om bedriftspresentasjonen:")
+                    .font(.title3)
+                    .bold()
+                    .padding()
+                Text(desc)
+                    .multilineTextAlignment(.leading)
+                    .padding(20)
+            }
+            
+            .background(Util.lightGradient())
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.white, lineWidth: 0.5)
+        )
+            .padding(25)
+                    
+            
         }
         .foregroundColor(.white)
         .background(Util.gradient())

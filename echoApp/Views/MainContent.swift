@@ -15,8 +15,8 @@ struct MainContent: View {
     
     var body: some View {
         VStack {
-            EventContainer(title: "Arrangementer")
             BedpressContainer(title: "Bedpresser")
+            EventContainer(title: "Arrangementer")
         }
         .padding(.horizontal, 20)
     }

@@ -101,33 +101,40 @@ struct EventView: View {
         ScrollView(.vertical) {
             HStack {
                 VStack {
-                    //Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!) {
+                    Link(destination: URL(string: "https://echo.uib.no/event/\(slug)")!) {
                         Text(title)
                             .font(.title)
                             .bold()
                             .padding()
-                    //}
+                    }
                     LinkButton(slug: slug, label: "Til påmelding")
                 }
                 .padding()
             }
             .padding()
             
-            InfoBox(date: self.date, registrationDate: self.registrationDate, location: self.location, contactEmail: "torgerboc@gmail.com")
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(Util.echoGradient(), lineWidth: 0.5)
-                )
-                .padding()
-            Text(desc)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(Util.echoGradient(), lineWidth: 0.5)
-                )
-                .padding()
-            Spacer()
+            InfoBox(date: self.date,
+                    registrationDate: self.registrationDate,
+                    location: self.location,
+                    contactEmail: "example@gmail.com"
+            )
+
+            VStack (alignment: .leading) {
+                Text("Mer om arrangementet:")
+                    .font(.title3)
+                    .bold()
+                    .padding()
+                Text(desc)
+                    .multilineTextAlignment(.leading)
+                    .padding(20)
+            }
+            
+            .background(Util.lightGradient())
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.white, lineWidth: 0.5)
+        )
+            .padding(25)
         }
         .foregroundColor(.white)
         .background(Util.gradient())
@@ -144,6 +151,7 @@ struct EventList: View {
             ForEach(slice, id: \._id) { event in
                 HStack {
                     Text(event.title)
+                        .multilineTextAlignment(.leading)
                         .font(.title3)
                     Spacer()
                     let start = event.date.startIndex

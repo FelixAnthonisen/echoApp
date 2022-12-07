@@ -15,37 +15,72 @@ struct InfoBox: View {
 
     
     var body: some View {
-        VStack {
-            HStack {
-                
+        Grid(alignment: .leading,
+             horizontalSpacing: 1,
+             verticalSpacing: 5) {
+            GridRow {
                 let start = date.startIndex
                 let end = date.index(start, offsetBy: 10)
-                Text(date[start..<end])
-                    .padding()
+                let date = String(date[start ..< end])
+                VStack (alignment: .leading) {
+                    Text("Dato:")
+                        .padding(.bottom, 2)
+                    HStack {
+                        Text(date)
+                        Image(systemName: "clock")
+                    }
+                }
                 
-                let start1 = registrationDate.startIndex
-                let end1 = registrationDate.index(start1, offsetBy: 10)
-                Text(registrationDate[start1..<end1])
-                    .padding()
+                
+                let startRegDate = registrationDate.startIndex
+                let endRegDate = registrationDate.index(startRegDate, offsetBy: 10)
+                let registrationDate = String(registrationDate[startRegDate ..< endRegDate])
+                VStack (alignment: .leading) {
+                    Text("Påmeldingsdato:")
+                        .padding(.bottom, 2)
+                    HStack {
+                        Text(registrationDate)
+                        Image(systemName: "calendar.badge.clock")
+                    }
+                }
             }
+            .padding()
             
-            
-            HStack {
-                Spacer()
-                Text(location)
-                Spacer()
+            GridRow {
+                HStack {
+                    Text(location).frame(width: 100).multilineTextAlignment(.leading)
+                    Image(systemName: "mappin.and.ellipse")
+                }
+                
+                
                 Link(destination: URL(string: contactEmail)!) {
                     Text("Avmelding")
+                        .underline()
+                    Image(systemName: "arrow.up.forward.square")
                 }
-                Spacer()
+                
             }
+            .padding()
             
         }
         .padding()
         .background(Util.lightGradient())
-        .cornerRadius(20)
+        .foregroundColor(.white)
         .bold()
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.white, lineWidth: 0.5)
+        )
     }
 }
 
-
+struct InfoBox_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoBox(
+            date: "2022-69-11",
+            registrationDate: "2022-42-24",
+            location: "hos meg veien en to tre langt",
+            contactEmail: "torgerboc@gmail.com"
+        )
+    }
+}

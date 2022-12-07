@@ -18,6 +18,8 @@
 		52F5124D293A1104009FEB14 /* EventClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5124C293A1104009FEB14 /* EventClass.swift */; };
 		52F7C3242940D4CC007944E3 /* CalendarUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F7C3232940D4CC007944E3 /* CalendarUtil.swift */; };
 		52F7C3262940F903007944E3 /* InfoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F7C3252940F903007944E3 /* InfoBox.swift */; };
+		52F7C328294129BF007944E3 /* NextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F7C327294129BF007944E3 /* NextContainer.swift */; };
+		52F7C32B29412A64007944E3 /* NextClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F7C32A29412A64007944E3 /* NextClass.swift */; };
 		9B7E9018293CEDDD008D8C09 /* EventContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E9017293CEDDD008D8C09 /* EventContainer.swift */; };
 		9B7E901A293CEDFB008D8C09 /* BedpressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */; };
 		9B8DBF6D2938E7D3007E5178 /* echoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8DBF6C2938E7D3007E5178 /* echoAppApp.swift */; };
@@ -42,6 +44,8 @@
 		52F5124C293A1104009FEB14 /* EventClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventClass.swift; sourceTree = "<group>"; };
 		52F7C3232940D4CC007944E3 /* CalendarUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUtil.swift; sourceTree = "<group>"; };
 		52F7C3252940F903007944E3 /* InfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBox.swift; sourceTree = "<group>"; };
+		52F7C327294129BF007944E3 /* NextContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextContainer.swift; sourceTree = "<group>"; };
+		52F7C32A29412A64007944E3 /* NextClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextClass.swift; sourceTree = "<group>"; };
 		9B7E9017293CEDDD008D8C09 /* EventContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContainer.swift; sourceTree = "<group>"; };
 		9B7E9019293CEDFB008D8C09 /* BedpressContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedpressContainer.swift; sourceTree = "<group>"; };
 		9B8DBF692938E7D3007E5178 /* echoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = echoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52F7C32929412A20007944E3 /* Next */ = {
+			isa = PBXGroup;
+			children = (
+				52F7C327294129BF007944E3 /* NextContainer.swift */,
+				52F7C32A29412A64007944E3 /* NextClass.swift */,
+			);
+			path = Next;
+			sourceTree = "<group>";
+		};
 		9B7E9015293CEC17008D8C09 /* Bedpress */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +144,7 @@
 		9B8DBF7A2938E9BF007E5178 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52F7C32929412A20007944E3 /* Next */,
 				9B7E9016293CEC20008D8C09 /* Event */,
 				9B7E9015293CEC17008D8C09 /* Bedpress */,
 				9B8DBF7B2938E9CE007E5178 /* Footer.swift */,
@@ -235,10 +249,12 @@
 				9B8DBF7C2938E9CE007E5178 /* Footer.swift in Sources */,
 				52F7C3242940D4CC007944E3 /* CalendarUtil.swift in Sources */,
 				9B8DBF802938EC23007E5178 /* MainContent.swift in Sources */,
+				52F7C32B29412A64007944E3 /* NextClass.swift in Sources */,
 				9B8DBF7E2938EB0D007E5178 /* Navbar.swift in Sources */,
 				9BCFBA9C293E5BEB002BB6F8 /* testview.swift in Sources */,
 				9B7E9018293CEDDD008D8C09 /* EventContainer.swift in Sources */,
 				9B8DBF6F2938E7D3007E5178 /* ContentView.swift in Sources */,
+				52F7C328294129BF007944E3 /* NextContainer.swift in Sources */,
 				52F7C3262940F903007944E3 /* InfoBox.swift in Sources */,
 				52F5124D293A1104009FEB14 /* EventClass.swift in Sources */,
 				520E5703293C02EC00464310 /* BedpressClass.swift in Sources */,

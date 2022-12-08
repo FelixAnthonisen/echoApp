@@ -398,6 +398,7 @@
 				DEVELOPMENT_TEAM = Y79NN7Q353;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Echo;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Godta for å legge til i kalender";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Bruk FaceID til å logge inn";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -429,6 +430,7 @@
 				DEVELOPMENT_TEAM = Y79NN7Q353;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Echo;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Godta for å legge til i kalender";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Bruk FaceID til å logge inn";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
